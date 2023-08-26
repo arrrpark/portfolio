@@ -1,2620 +1,356 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Portfolio</title>
-    <meta content="Powered by Kobweb" name="description" />
-    <link href="/favicon.ico" rel="icon" />
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div
-      id="root"
-      style="
-        width: 100%;
-        height: 100%;
-        --silk-background-color: rgb(255, 255, 255);
-        --silk-color: rgb(0, 0, 0);
-        --silk-border-color: rgb(0, 0, 0);
-        --silk-button-background-default-color: rgb(204, 204, 204);
-        --silk-button-background-focus-color: rgb(100, 149, 237);
-        --silk-button-background-hover-color: rgb(163, 163, 163);
-        --silk-button-background-pressed-color: rgb(122, 122, 122);
-        --silk-button-color: rgb(0, 0, 0);
-        --silk-divider-color: rgb(0, 0, 0);
-        --silk-link-default-color: rgb(0, 0, 255);
-        --silk-link-visited-color: rgb(128, 0, 128);
-        --overlay-background-color: rgba(0, 0, 0, 0.4980392156862745);
-        --silk-surface-background-color: rgb(255, 255, 255);
-        --silk-surface-color: rgb(0, 0, 0);
-        --silk-switch-thumb-color: rgb(255, 255, 255);
-        --silk-tab-color: rgb(0, 0, 0);
-        --silk-tab-background-color: rgb(255, 255, 255);
-        --silk-tab-border-color: rgba(0, 0, 0, 0.2);
-        --silk-tab-disabled-background-color: rgb(255, 255, 255);
-        --silk-tab-hover-background-color: rgb(211, 211, 211);
-        --silk-tab-pressed-background-color: rgb(245, 245, 245);
-        --silk-toc-border-color: rgb(0, 0, 0);
-        --silk-tooltip-background-color: rgb(0, 0, 0);
-        --silk-tooltip-color: rgb(255, 255, 255);
-      "
-    >
-      <style>
-        html,
-        body {
-          padding: 0px;
-          margin: 0px;
-        }
-        * {
-          box-sizing: border-box;
-        }
-      </style>
-      <style>
-        .kobweb-box {
-          display: grid;
-          grid-template-columns: minmax(0px, 1fr);
-          grid-template-rows: minmax(0px, 1fr);
-        }
-        .kobweb-box > * {
-          grid-area: 1 / 1 / auto / auto;
-        }
-        .kobweb-box.kobweb-align-top-start {
-          place-items: start;
-        }
-        .kobweb-box.kobweb-align-top-center {
-          place-items: start center;
-        }
-        .kobweb-box.kobweb-align-top-end {
-          place-items: start end;
-        }
-        .kobweb-box.kobweb-align-center-start {
-          place-items: center start;
-        }
-        .kobweb-box.kobweb-align-center {
-          place-items: center;
-        }
-        .kobweb-box.kobweb-align-center-end {
-          place-items: center end;
-        }
-        .kobweb-box.kobweb-align-bottom-start {
-          place-items: end start;
-        }
-        .kobweb-box.kobweb-align-bottom-center {
-          place-items: end center;
-        }
-        .kobweb-box.kobweb-align-bottom-end {
-          place-items: end;
-        }
-        .kobweb-box > .kobweb-align-top-start-self {
-          place-self: start;
-        }
-        .kobweb-box > .kobweb-align-top-center-self {
-          place-self: start center;
-        }
-        .kobweb-box > .kobweb-align-top-end-self {
-          place-self: start end;
-        }
-        .kobweb-box > .kobweb-align-center-start-self {
-          place-self: center start;
-        }
-        .kobweb-box > .kobweb-align-center-self {
-          place-self: center;
-        }
-        .kobweb-box > .kobweb-align-center-end-self {
-          place-self: center end;
-        }
-        .kobweb-box > .kobweb-align-bottom-start-self {
-          place-self: end start;
-        }
-        .kobweb-box > .kobweb-align-bottom-center-self {
-          place-self: end center;
-        }
-        .kobweb-box > .kobweb-align-bottom-end-self {
-          place-self: end;
-        }
-        .kobweb-col {
-          display: flex;
-          flex-direction: column;
-        }
-        .kobweb-col.kobweb-arrange-top {
-          justify-content: flex-start;
-        }
-        .kobweb-col.kobweb-arrange-center {
-          justify-content: center;
-        }
-        .kobweb-col.kobweb-arrange-bottom {
-          justify-content: flex-end;
-        }
-        .kobweb-col.kobweb-arrange-space-evenly {
-          justify-content: space-evenly;
-        }
-        .kobweb-col.kobweb-arrange-space-between {
-          justify-content: space-between;
-        }
-        .kobweb-col.kobweb-arrange-space-around {
-          justify-content: space-around;
-        }
-        .kobweb-col.kobweb-align-start {
-          align-items: flex-start;
-        }
-        .kobweb-col.kobweb-align-center-horiz {
-          align-items: center;
-        }
-        .kobweb-col.kobweb-align-end {
-          align-items: flex-end;
-        }
-        .kobweb-col > .kobweb-align-start-self {
-          align-self: flex-start;
-        }
-        .kobweb-col > .kobweb-align-center-horiz-self {
-          align-self: center;
-        }
-        .kobweb-col > .kobweb-align-end-self {
-          align-self: flex-end;
-        }
-        .kobweb-row {
-          display: flex;
-          flex-direction: row;
-        }
-        .kobweb-row.kobweb-arrange-start {
-          justify-content: flex-start;
-        }
-        .kobweb-row.kobweb-arrange-center {
-          justify-content: center;
-        }
-        .kobweb-row.kobweb-arrange-end {
-          justify-content: flex-end;
-        }
-        .kobweb-row.kobweb-arrange-space-evenly {
-          justify-content: space-evenly;
-        }
-        .kobweb-row.kobweb-arrange-space-between {
-          justify-content: space-between;
-        }
-        .kobweb-row.kobweb-arrange-space-around {
-          justify-content: space-around;
-        }
-        .kobweb-row.kobweb-align-top {
-          align-items: flex-start;
-        }
-        .kobweb-row.kobweb-align-center-vert {
-          align-items: center;
-        }
-        .kobweb-row.kobweb-align-bottom {
-          align-items: flex-end;
-        }
-        .kobweb-row > .kobweb-align-top-self {
-          align-self: flex-start;
-        }
-        .kobweb-row > .kobweb-align-center-vert-self {
-          align-self: center;
-        }
-        .kobweb-row > .kobweb-align-bottom-self {
-          align-self: flex-end;
-        }
-        .kobweb-spacer {
-          flex-grow: 1;
-        }
-      </style>
-      <style>
-        body {
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-            Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
-            "Helvetica Neue", sans-serif;
-        }
-        h1 {
-          font-weight: bold;
-          text-align: center;
-          margin: 0px 0px 1rem;
-          font-size: 3.5rem;
-        }
-        h2 {
-          font-weight: bold;
-          text-align: center;
-          margin: 0px 0px 1rem;
-          font-size: 2.5rem;
-        }
-        h3 {
-          font-weight: bold;
-          text-align: center;
-          margin: 0px 0px 1rem;
-          font-size: 1.5rem;
-        }
-        .silk-button {
-          color: var(--silk-button-color);
-          background-color: var(--silk-button-background-default-color);
-          line-height: 1.2;
-          font-size: 16px;
-          padding: 8px 16px;
-          border-radius: 4px;
-          border-width: 0px;
-          outline: 0px;
-          user-select: none;
-        }
-        .silk-button:hover:not([aria-disabled="true"]) {
-          background-color: var(--silk-button-background-hover-color);
-          cursor: pointer;
-        }
-        .silk-button:focus-visible:not([aria-disabled="true"]) {
-          box-shadow: 0px 0px 0 3px var(--silk-button-background-focus-color);
-        }
-        .silk-button:active:not([aria-disabled="true"]) {
-          background-color: var(--silk-button-background-pressed-color);
-        }
-        .silk-disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-        }
-        .silk-divider {
-          border-top: 1px solid var(--silk-divider-color);
-          width: 90%;
-        }
-        .silk-link {
-          text-decoration-line: none;
-        }
-        .silk-link:link {
-          color: var(--silk-link-default-color);
-        }
-        .silk-link:visited {
-          color: var(--silk-link-visited-color);
-        }
-        .silk-link:hover {
-          text-decoration-line: underline;
-        }
-        .silk-overlay {
-          background-color: var(--overlay-background-color);
-        }
-        .silk-popup {
-          transition: opacity 150ms ease 0s;
-        }
-        .silk-simple-grid {
-          display: grid;
-        }
-        @media (min-width: 0px) {
-          .silk-simple-grid {
-            grid-template-columns: repeat(
-              var(--silk-simple-grid-col-count-zero),
-              1fr
-            );
-          }
-        }
-        @media (min-width: 30rem) {
-          .silk-simple-grid {
-            grid-template-columns: repeat(
-              var(--silk-simple-grid-col-count-sm),
-              1fr
-            );
-          }
-        }
-        @media (min-width: 48rem) {
-          .silk-simple-grid {
-            grid-template-columns: repeat(
-              var(--silk-simple-grid-col-count-md),
-              1fr
-            );
-          }
-        }
-        @media (min-width: 62rem) {
-          .silk-simple-grid {
-            grid-template-columns: repeat(
-              var(--silk-simple-grid-col-count-lg),
-              1fr
-            );
-          }
-        }
-        @media (min-width: 80rem) {
-          .silk-simple-grid {
-            grid-template-columns: repeat(
-              var(--silk-simple-grid-col-count-xl),
-              1fr
-            );
-          }
-        }
-        .silk-smooth-color {
-          transition: background-color 200ms ease 0s;
-        }
-        .silk-surface {
-          background-color: var(--silk-surface-background-color);
-          color: var(--silk-surface-color);
-        }
-        .silk-switch-track {
-          width: var(--silk-switch-track-width);
-          min-width: var(--silk-switch-track-width);
-          height: var(--silk-switch-track-height);
-          min-height: var(--silk-switch-track-height);
-          padding: var(--silk-switch-track-padding);
-          border-radius: var(--silk-switch-border-radius, 9999px);
-          background-color: var(--silk-switch-track-background-color);
-          transition: background-color 150ms ease 0s;
-          box-sizing: content-box;
-        }
-        .silk-switch-track:hover:not([aria-disabled="true"]) {
-          cursor: pointer;
-        }
-        .silk-switch-thumb {
-          width: var(--silk-switch-track-height);
-          height: var(--silk-switch-track-height);
-          border-radius: var(--silk-switch-border-radius, 9999px);
-          background-color: rgb(255, 255, 255);
-          translate: var(--silk-switch-thumb-offset);
-          transition: translate 150ms ease 0s;
-        }
-        .tabs-tab-row {
-          width: 100%;
-          border-bottom: var(--silk-tab-border-thickness, 2px) solid
-            var(--silk-tab-border-color);
-        }
-        .tabs-tab {
-          cursor: pointer;
-          transition: background-color 200ms ease 0s, color 200ms ease 0s,
-            border-color 200ms ease 0s;
-          background-color: var(--silk-tab-background-color);
-          color: var(--silk-tab-color);
-          user-select: none;
-          padding: 0.5rem;
-          margin-bottom: calc(-1 * var(--silk-tab-border-thickness, 2px));
-          border-bottom: var(--silk-tab-border-thickness, 2px) solid
-            var(--silk-tab-border-color);
-        }
-        .tabs-tab[aria-disabled="true"] {
-          background-color: var(--silk-tab-disabled-background-color);
-          cursor: not-allowed;
-        }
-        .tabs-tab:hover:not([aria-disabled="true"]) {
-          background-color: var(--silk-tab-hover-background-color);
-        }
-        .tabs-tab:active:not([aria-disabled="true"]) {
-          background-color: var(--silk-tab-pressed-background-color);
-        }
-        .tabs-panel {
-          padding: 1rem;
-          width: 100%;
-          flex-grow: 1;
-          overflow-y: auto;
-        }
-        .silk-toc {
-          list-style-type: none;
-          text-align: start;
-          padding: 0rem;
-        }
-        .silk-tooltip-arrow {
-          position: absolute;
-          border-width: 5px;
-          border-style: solid;
-        }
-        .silk-tooltip {
-          position: relative;
-          background-color: var(--silk-tooltip-background-color);
-          color: var(--silk-tooltip-color);
-          border-radius: 6px;
-        }
-        .tooltip-text {
-          padding: 5px;
-        }
-        @media not all and (min-width: 0px) {
-          .silk-display-if-at-least-zero {
-            display: none;
-          }
-        }
-        @media not all and (min-width: 30rem) {
-          .silk-display-if-at-least-sm {
-            display: none;
-          }
-        }
-        @media not all and (min-width: 48rem) {
-          .silk-display-if-at-least-md {
-            display: none;
-          }
-        }
-        @media not all and (min-width: 62rem) {
-          .silk-display-if-at-least-lg {
-            display: none;
-          }
-        }
-        @media not all and (min-width: 80rem) {
-          .silk-display-if-at-least-xl {
-            display: none;
-          }
-        }
-        @media (min-width: 0px) {
-          .silk-display-until-zero {
-            display: none;
-          }
-        }
-        @media (min-width: 30rem) {
-          .silk-display-until-sm {
-            display: none;
-          }
-        }
-        @media (min-width: 48rem) {
-          .silk-display-until-md {
-            display: none;
-          }
-        }
-        @media (min-width: 62rem) {
-          .silk-display-until-lg {
-            display: none;
-          }
-        }
-        @media (min-width: 80rem) {
-          .silk-display-until-xl {
-            display: none;
-          }
-        }
-        .nav-header {
-          width: 100%;
-          position: sticky;
-          top: 0%;
-        }
-        .navigation-item {
-          color: rgb(18, 29, 52);
-          transition: color 200ms ease 0s;
-        }
-        .navigation-item:any-link {
-          color: rgb(18, 29, 52);
-        }
-        .navigation-item:hover {
-          color: rgb(0, 167, 142);
-        }
-        .portfolio-arrow-icon {
-          color: rgb(207, 207, 207);
-          transition: color 200ms ease 0s;
-        }
-        .portfolio-arrow-icon:hover {
-          color: rgb(0, 167, 142);
-        }
-        .silk-image.silk-image-fit-width {
-          width: 100%;
-          object-fit: scale-down;
-        }
-        .silk-link.silk-link-uncolored:link {
-          color: var(--silk-color);
-        }
-        .silk-link.silk-link-uncolored:visited {
-          color: var(--silk-color);
-        }
-        .silk-link.silk-link-undecorated:hover {
-          text-decoration-line: none;
-        }
-        .silk-surface.silk-surface-animated-color {
-          transition: background-color 200ms ease 0s;
-        }
-        .silk-surface.silk-surface-animated-color div {
-          transition: background-color 200ms ease 0s;
-        }
-        .silk-toc.silk-toc-bordered {
-          border-radius: 5px;
-          border: 1px solid var(--silk-toc-border-color);
-          padding: 1rem;
-        }
-        .silk-tooltip-arrow.silk-tooltip-arrow-top-left {
-          margin: -9px 0px 0px 9px;
-          top: 0px;
-          border-color: transparent transparent
-            var(--silk-tooltip-background-color) transparent;
-        }
-        .silk-tooltip-arrow.silk-tooltip-arrow-top {
-          margin: -9px 0px 0px -5px;
-          left: 50%;
-          top: 0px;
-          border-color: transparent transparent
-            var(--silk-tooltip-background-color) transparent;
-        }
-        .silk-tooltip-arrow.silk-tooltip-arrow-top-right {
-          margin: -9px 9px 0px 0px;
-          right: 0px;
-          top: 0px;
-          border-color: transparent transparent
-            var(--silk-tooltip-background-color) transparent;
-        }
-        .silk-tooltip-arrow.silk-tooltip-arrow-left-top {
-          margin: 9px 0px 0px -9px;
-          left: 0px;
-          top: 0px;
-          border-color: transparent var(--silk-tooltip-background-color)
-            transparent transparent;
-        }
-        .silk-tooltip-arrow.silk-tooltip-arrow-left {
-          margin: -5px 0px 0px -9px;
-          left: 0px;
-          top: 50%;
-          border-color: transparent var(--silk-tooltip-background-color)
-            transparent transparent;
-        }
-        .silk-tooltip-arrow.silk-tooltip-arrow-left-bottom {
-          margin: 0px 0px 9px -9px;
-          left: 0px;
-          bottom: 0px;
-          border-color: transparent var(--silk-tooltip-background-color)
-            transparent transparent;
-        }
-        .silk-tooltip-arrow.silk-tooltip-arrow-right-top {
-          margin: 9px -9px 0px 0px;
-          right: 0px;
-          top: 0px;
-          border-color: transparent transparent transparent
-            var(--silk-tooltip-background-color);
-        }
-        .silk-tooltip-arrow.silk-tooltip-arrow-right {
-          margin: -5px -9px 0px 0px;
-          right: 0px;
-          top: 50%;
-          border-color: transparent transparent transparent
-            var(--silk-tooltip-background-color);
-        }
-        .silk-tooltip-arrow.silk-tooltip-arrow-right-bottom {
-          margin: 0px -9px 9px 0px;
-          right: 0px;
-          bottom: 0px;
-          border-color: transparent transparent transparent
-            var(--silk-tooltip-background-color);
-        }
-        .silk-tooltip-arrow.silk-tooltip-arrow-bottom-left {
-          margin: 0px 0px -9px 9px;
-          left: 0px;
-          bottom: 0px;
-          border-color: var(--silk-tooltip-background-color) transparent
-            transparent transparent;
-        }
-        .silk-tooltip-arrow.silk-tooltip-arrow-bottom {
-          margin: 0px 0px -9px -5px;
-          left: 50%;
-          bottom: 0px;
-          border-color: var(--silk-tooltip-background-color) transparent
-            transparent transparent;
-        }
-        .silk-tooltip-arrow.silk-tooltip-arrow-bottom-right {
-          margin: 0px 9px -9px 0px;
-          right: 0px;
-          bottom: 0px;
-          border-color: var(--silk-tooltip-background-color) transparent
-            transparent transparent;
-        }
-      </style>
-      <div
-        class="silk-surface silk-smooth-color kobweb-box kobweb-align-top-start"
-        style="min-height: 100vh"
-      >
-        <div
-          class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz"
-          style="width: 100%; height: 100%"
-        >
-          <div class="nav-header kobweb-box kobweb-align-top-start">
-            <div
-              class="kobweb-row kobweb-arrange-end kobweb-align-center-vert"
-              style="width: 100%; height: 80px; background-color: white"
-            >
-              <a
-                class="silk-link"
-                style="
-                  margin: 0px 25px;
-                  font-weight: 500;
-                  font-size: 16px;
-                  color: rgb(18, 29, 52);
-                "
-                href="#about"
-                >About me</a
-              ><a
-                class="silk-link"
-                style="
-                  margin: 0px 25px;
-                  font-weight: 500;
-                  font-size: 16px;
-                  color: rgb(18, 29, 52);
-                "
-                href="#experience"
-                >Experience</a
-              ><a
-                class="silk-link"
-                style="
-                  margin: 0px 25px;
-                  font-weight: 500;
-                  font-size: 16px;
-                  color: rgb(18, 29, 52);
-                "
-                href="#project"
-                >Projects</a
-              ><a
-                class="silk-link"
-                style="
-                  margin: 0px 25px;
-                  font-weight: 500;
-                  font-size: 16px;
-                  color: rgb(18, 29, 52);
-                "
-                href="#personal"
-                >Personal Projects</a
-              ><a
-                class="silk-link"
-                style="
-                  margin: 0px 25px;
-                  font-weight: 500;
-                  font-size: 16px;
-                  color: rgb(18, 29, 52);
-                "
-                href="#education"
-                >Education</a
-              >
-            </div>
-          </div>
-          <div
-            class="kobweb-box kobweb-align-top-start"
-            style="width: 100%; height: 100%"
-          >
-            <img
-              class="silk-image"
-              style="
-                width: 100%;
-                height: 920px;
-                object-fit: cover;
-                overflow: hidden;
-              "
-              src="background.jpg"
-              alt=""
-            />
-            <div
-              class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz"
-              style="width: 100%; height: 100%"
-            >
-              <p
-                style="
-                  font-weight: bold;
-                  font-size: 55px;
-                  margin: 230px 20px 0px;
-                  color: rgb(18, 29, 52);
-                "
-              >
-                Hello, I'm Seungmyun Park
-              </p>
-              <p
-                style="
-                  font-weight: normal;
-                  font-size: 25px;
-                  margin: 20px 20px 5px;
-                  color: rgb(18, 29, 52);
-                "
-              >
-                I'm a mobile app developer focusing on iOS development,
-              </p>
-              <p
-                style="
-                  font-weight: normal;
-                  font-size: 25px;
-                  margin: 0px 20px;
-                  color: rgb(18, 29, 52);
-                "
-              >
-                who is also capable of react-native and android development
-              </p>
-              <p
-                style="
-                  font-weight: normal;
-                  font-size: 17px;
-                  margin: 10px 20px 0px;
-                  color: rgb(18, 29, 52);
-                "
-              >
-                (This site is made in
-                <a class="silk-link" href="https://kobweb.varabyte.com/"
-                  >Kobweb</a
-                >
-                (Kotlin multiplatform for web using Compose))
-              </p>
-            </div>
-          </div>
-          <div
-            class="kobweb-col kobweb-arrange-top kobweb-align-start"
-            style="width: 70%"
-            id="about"
-          >
-            <div
-              class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz"
-              style="width: 100%; margin: 100px 0px 0px"
-            >
-              <p
-                style="
-                  width: 100%;
-                  text-align: center;
-                  letter-spacing: 3px;
-                  margin: 30px 0px 10px;
-                  font-size: 40px;
-                  font-weight: bold;
-                  color: rgb(0, 167, 142);
-                  transition: margin 300ms ease 0s;
-                "
-              >
-                About me
-              </p>
-              <div
-                class="kobweb-box kobweb-align-top-start"
-                style="
-                  height: 2px;
-                  width: 80px;
-                  margin: 0px;
-                  background-color: rgb(0, 167, 142);
-                  border-radius: 50px;
-                "
-              ></div>
-              <p
-                style="
-                  font-size: 20px;
-                  margin: 20px 0px 0px;
-                  text-align: center;
-                  font-weight: normal;
-                  color: rgb(18, 29, 52);
-                "
-              >
-                Here you would find more about me, and my current skills mostly
-                in terms of programming
-              </p>
-            </div>
-            <div
-              class="kobweb-row kobweb-arrange-space-between kobweb-align-top"
-              style="width: 100%; margin: 50px 0px 150px"
-            >
-              <div
-                class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                style="height: 100%"
-              >
-                <p
-                  style="
-                    margin: 0px 0px 15px;
-                    font-weight: bold;
-                    line-height: 1.5;
-                    font-size: 25px;
-                    color: rgb(18, 29, 52);
-                  "
-                >
-                  <span class="silk-span-text">Get to know me</span>
-                </p>
-                <p
-                  style="
-                    margin: 0px 0px 15px;
-                    font-weight: normal;
-                    line-height: 1.5;
-                    font-size: 18px;
-                    color: rgb(18, 29, 52);
-                  "
-                >
-                  I am
-                  <span class="silk-span-text" style="font-weight: bold"
-                    >a skilled mobile client engineer with around 5 years of
-                    industry experience.</span
-                  >I have a verifiable history of contributing directly to
-                  company growth and expansion throughout my career.
-                </p>
-                <p
-                  style="
-                    margin: 15px 0px;
-                    font-weight: normal;
-                    line-height: 1.5;
-                    font-size: 18px;
-                    color: rgb(18, 29, 52);
-                  "
-                >
-                  I have consistently exceeded performance goals and I am adept
-                  at achieving maximum operational output with minimal resource
-                  expenditure.
-                  <span class="silk-span-text" style="font-weight: bold"
-                    >My current focus is on iOS development, but I have
-                    experience in android and react-native as well.</span
-                  >
-                </p>
-                <p
-                  style="
-                    margin: 15px 0px;
-                    font-weight: normal;
-                    line-height: 1.5;
-                    font-size: 18px;
-                    color: rgb(18, 29, 52);
-                  "
-                >
-                  I am also highly interested in technologies that help me to
-                  make maintainable and elegant mobile application, such as MVVM
-                  pattern, reactive programming and unit test.
-                </p>
-              </div>
-              <span class="silk-span-text" style="width: 75px"></span>
-              <div
-                class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                style="width: 500px; height: 100%"
-              >
-                <p
-                  style="
-                    margin: 15px 0px;
-                    font-weight: bold;
-                    line-height: 1.5;
-                    font-size: 25px;
-                    color: rgb(18, 29, 52);
-                  "
-                >
-                  <span class="silk-span-text">Proficient</span>
-                </p>
-                <div
-                  class="kobweb-row kobweb-arrange-start kobweb-align-top"
-                  style="width: 100%"
-                >
-                  <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
-                    <div
-                      class="kobweb-row kobweb-arrange-start kobweb-align-top"
-                      style="
-                        background-color: rgb(249, 249, 249);
-                        border-radius: 10px;
-                      "
-                    >
-                      <p
-                        style="
-                          margin: 15px 20px;
-                          min-width: 40px;
-                          text-align: center;
-                          font-weight: 600;
-                          font-size: 15px;
-                          color: rgb(18, 29, 52);
-                        "
-                      >
-                        <span class="silk-span-text">iOS</span>
-                      </p>
-                    </div>
-                    <span class="silk-span-text" style="width: 15px"></span>
-                  </div>
-                  <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
-                    <div
-                      class="kobweb-row kobweb-arrange-start kobweb-align-top"
-                      style="
-                        background-color: rgb(249, 249, 249);
-                        border-radius: 10px;
-                      "
-                    >
-                      <p
-                        style="
-                          margin: 15px 20px;
-                          min-width: 40px;
-                          text-align: center;
-                          font-weight: 600;
-                          font-size: 15px;
-                          color: rgb(18, 29, 52);
-                        "
-                      >
-                        <span class="silk-span-text">Swift</span>
-                      </p>
-                    </div>
-                    <span class="silk-span-text" style="width: 15px"></span>
-                  </div>
-                  <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
-                    <div
-                      class="kobweb-row kobweb-arrange-start kobweb-align-top"
-                      style="
-                        background-color: rgb(249, 249, 249);
-                        border-radius: 10px;
-                      "
-                    >
-                      <p
-                        style="
-                          margin: 15px 20px;
-                          min-width: 40px;
-                          text-align: center;
-                          font-weight: 600;
-                          font-size: 15px;
-                          color: rgb(18, 29, 52);
-                        "
-                      >
-                        <span class="silk-span-text">Objective-C</span>
-                      </p>
-                    </div>
-                    <span class="silk-span-text" style="width: 15px"></span>
-                  </div>
-                </div>
-                <p
-                  style="
-                    margin: 15px 0px;
-                    font-weight: bold;
-                    line-height: 1.5;
-                    font-size: 25px;
-                    color: rgb(18, 29, 52);
-                  "
-                >
-                  <span class="silk-span-text">Intermediate</span>
-                </p>
-                <div
-                  class="kobweb-row kobweb-arrange-start kobweb-align-top"
-                  style="width: 100%"
-                >
-                  <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
-                    <div
-                      class="kobweb-row kobweb-arrange-start kobweb-align-top"
-                      style="
-                        background-color: rgb(249, 249, 249);
-                        border-radius: 10px;
-                      "
-                    >
-                      <p
-                        style="
-                          margin: 15px 20px;
-                          min-width: 40px;
-                          text-align: center;
-                          font-weight: 600;
-                          font-size: 15px;
-                          color: rgb(18, 29, 52);
-                        "
-                      >
-                        <span class="silk-span-text">React-native</span>
-                      </p>
-                    </div>
-                    <span class="silk-span-text" style="width: 15px"></span>
-                  </div>
-                  <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
-                    <div
-                      class="kobweb-row kobweb-arrange-start kobweb-align-top"
-                      style="
-                        background-color: rgb(249, 249, 249);
-                        border-radius: 10px;
-                      "
-                    >
-                      <p
-                        style="
-                          margin: 15px 20px;
-                          min-width: 40px;
-                          text-align: center;
-                          font-weight: 600;
-                          font-size: 15px;
-                          color: rgb(18, 29, 52);
-                        "
-                      >
-                        <span class="silk-span-text">Flow</span>
-                      </p>
-                    </div>
-                    <span class="silk-span-text" style="width: 15px"></span>
-                  </div>
-                  <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
-                    <div
-                      class="kobweb-row kobweb-arrange-start kobweb-align-top"
-                      style="
-                        background-color: rgb(249, 249, 249);
-                        border-radius: 10px;
-                      "
-                    >
-                      <p
-                        style="
-                          margin: 15px 20px;
-                          min-width: 40px;
-                          text-align: center;
-                          font-weight: 600;
-                          font-size: 15px;
-                          color: rgb(18, 29, 52);
-                        "
-                      >
-                        <span class="silk-span-text">ES6</span>
-                      </p>
-                    </div>
-                    <span class="silk-span-text" style="width: 15px"></span>
-                  </div>
-                  <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
-                    <div
-                      class="kobweb-row kobweb-arrange-start kobweb-align-top"
-                      style="
-                        background-color: rgb(249, 249, 249);
-                        border-radius: 10px;
-                      "
-                    >
-                      <p
-                        style="
-                          margin: 15px 20px;
-                          min-width: 40px;
-                          text-align: center;
-                          font-weight: 600;
-                          font-size: 15px;
-                          color: rgb(18, 29, 52);
-                        "
-                      >
-                        <span class="silk-span-text">macOS</span>
-                      </p>
-                    </div>
-                    <span class="silk-span-text" style="width: 15px"></span>
-                  </div>
-                </div>
-                <div
-                  class="kobweb-row kobweb-arrange-start kobweb-align-top"
-                  style="margin: 10px 0px 0px; width: 100%"
-                >
-                  <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
-                    <div
-                      class="kobweb-row kobweb-arrange-start kobweb-align-top"
-                      style="
-                        background-color: rgb(249, 249, 249);
-                        border-radius: 10px;
-                      "
-                    >
-                      <p
-                        style="
-                          margin: 15px 20px;
-                          min-width: 40px;
-                          text-align: center;
-                          font-weight: 600;
-                          font-size: 15px;
-                          color: rgb(18, 29, 52);
-                        "
-                      >
-                        <span class="silk-span-text">Android</span>
-                      </p>
-                    </div>
-                    <span class="silk-span-text" style="width: 15px"></span>
-                  </div>
-                  <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
-                    <div
-                      class="kobweb-row kobweb-arrange-start kobweb-align-top"
-                      style="
-                        background-color: rgb(249, 249, 249);
-                        border-radius: 10px;
-                      "
-                    >
-                      <p
-                        style="
-                          margin: 15px 20px;
-                          min-width: 40px;
-                          text-align: center;
-                          font-weight: 600;
-                          font-size: 15px;
-                          color: rgb(18, 29, 52);
-                        "
-                      >
-                        <span class="silk-span-text">Kotlin</span>
-                      </p>
-                    </div>
-                    <span class="silk-span-text" style="width: 15px"></span>
-                  </div>
-                  <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
-                    <div
-                      class="kobweb-row kobweb-arrange-start kobweb-align-top"
-                      style="
-                        background-color: rgb(249, 249, 249);
-                        border-radius: 10px;
-                      "
-                    >
-                      <p
-                        style="
-                          margin: 15px 20px;
-                          min-width: 40px;
-                          text-align: center;
-                          font-weight: 600;
-                          font-size: 15px;
-                          color: rgb(18, 29, 52);
-                        "
-                      >
-                        <span class="silk-span-text">Java</span>
-                      </p>
-                    </div>
-                    <span class="silk-span-text" style="width: 15px"></span>
-                  </div>
-                  <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
-                    <div
-                      class="kobweb-row kobweb-arrange-start kobweb-align-top"
-                      style="
-                        background-color: rgb(249, 249, 249);
-                        border-radius: 10px;
-                      "
-                    >
-                      <p
-                        style="
-                          margin: 15px 20px;
-                          min-width: 40px;
-                          text-align: center;
-                          font-weight: 600;
-                          font-size: 15px;
-                          color: rgb(18, 29, 52);
-                        "
-                      >
-                        <span class="silk-span-text">OpenCV</span>
-                      </p>
-                    </div>
-                    <span class="silk-span-text" style="width: 15px"></span>
-                  </div>
-                </div>
-                <p
-                  style="
-                    margin: 15px 0px;
-                    font-weight: bold;
-                    line-height: 1.5;
-                    font-size: 25px;
-                    color: rgb(18, 29, 52);
-                  "
-                >
-                  <span class="silk-span-text">Experienced</span>
-                </p>
-                <div
-                  class="kobweb-row kobweb-arrange-start kobweb-align-top"
-                  style="margin: 0px; width: 100%"
-                >
-                  <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
-                    <div
-                      class="kobweb-row kobweb-arrange-start kobweb-align-top"
-                      style="
-                        background-color: rgb(249, 249, 249);
-                        border-radius: 10px;
-                      "
-                    >
-                      <p
-                        style="
-                          margin: 15px 20px;
-                          min-width: 40px;
-                          text-align: center;
-                          font-weight: 600;
-                          font-size: 15px;
-                          color: rgb(18, 29, 52);
-                        "
-                      >
-                        <span class="silk-span-text">Kobweb(KMM for web)</span>
-                      </p>
-                    </div>
-                    <span class="silk-span-text" style="width: 15px"></span>
-                  </div>
-                  <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
-                    <div
-                      class="kobweb-row kobweb-arrange-start kobweb-align-top"
-                      style="
-                        background-color: rgb(249, 249, 249);
-                        border-radius: 10px;
-                      "
-                    >
-                      <p
-                        style="
-                          margin: 15px 20px;
-                          min-width: 40px;
-                          text-align: center;
-                          font-weight: 600;
-                          font-size: 15px;
-                          color: rgb(18, 29, 52);
-                        "
-                      >
-                        <span class="silk-span-text">C++</span>
-                      </p>
-                    </div>
-                    <span class="silk-span-text" style="width: 15px"></span>
-                  </div>
-                  <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
-                    <div
-                      class="kobweb-row kobweb-arrange-start kobweb-align-top"
-                      style="
-                        background-color: rgb(249, 249, 249);
-                        border-radius: 10px;
-                      "
-                    >
-                      <p
-                        style="
-                          margin: 15px 20px;
-                          min-width: 40px;
-                          text-align: center;
-                          font-weight: 600;
-                          font-size: 15px;
-                          color: rgb(18, 29, 52);
-                        "
-                      >
-                        <span class="silk-span-text">React</span>
-                      </p>
-                    </div>
-                    <span class="silk-span-text" style="width: 15px"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz"
-            style="
-              width: 100%;
-              padding: 50px 0px;
-              background-color: rgb(249, 249, 249);
-            "
-            id="experience"
-          >
-            <div
-              class="kobweb-col kobweb-arrange-top kobweb-align-start"
-              style="width: 90%"
-            >
-              <div
-                class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz"
-                style="width: 100%; padding: 50px 0px 0px"
-              >
-                <p
-                  style="
-                    width: 100%;
-                    text-align: center;
-                    letter-spacing: 3px;
-                    margin: 30px 0px 10px;
-                    font-size: 40px;
-                    font-weight: bold;
-                    color: rgb(0, 167, 142);
-                    transition: margin 300ms ease 0s;
-                  "
-                >
-                  Experience
-                </p>
-                <div
-                  class="kobweb-box kobweb-align-top-start"
-                  style="
-                    height: 2px;
-                    width: 80px;
-                    margin: 0px;
-                    background-color: rgb(0, 167, 142);
-                    border-radius: 50px;
-                  "
-                ></div>
-              </div>
-              <div
-                class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz"
-                style="
-                  width: 100%;
-                  margin: 50px 0px 0px;
-                  padding: 0px 0px 100px;
-                "
-              >
-                <div
-                  class="kobweb-row kobweb-arrange-center kobweb-align-center-vert"
-                  style="width: 1200px; margin: 20px 0px"
-                >
-                  <div
-                    class="kobweb-box kobweb-align-top-start"
-                    style="width: 100px; margin: 0px 15px 0px 0px"
-                  >
-                    <img
-                      class="silk-image"
-                      style="width: 80px; height: 80px; object-fit: contain"
-                      src="bca_uk.jpg"
-                      alt=""
-                    />
-                  </div>
-                  <div
-                    class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                    style="margin: 0px 15px 0px 0px; height: 100%"
-                  >
-                    <p
-                      style="
-                        width: 360px;
-                        margin: 0px;
-                        font-size: 15px;
-                        font-weight: bold;
-                        color: rgb(18, 29, 52);
-                      "
-                    >
-                      BCA UK, iOS developer
-                    </p>
-                    <p
-                      style="
-                        margin: 0px;
-                        font-size: 14px;
-                        font-weight: normal;
-                        color: rgb(18, 29, 52);
-                      "
-                    >
-                      - AutoCapture iOS application development
-                    </p>
-                    <p
-                      style="
-                        margin: 0px;
-                        font-size: 14px;
-                        font-weight: normal;
-                        color: rgb(18, 29, 52);
-                      "
-                    >
-                      - AutoComposePro macOS application development
-                    </p>
-                  </div>
-                  <p
-                    style="
-                      margin: 0px;
-                      width: 400px;
-                      text-align: start;
-                      font-size: 16px;
-                      font-weight: bold;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    May 2022 ~ Present (1 year and 4 months)
-                  </p>
-                </div>
-                <div
-                  class="kobweb-row kobweb-arrange-center kobweb-align-center-vert"
-                  style="width: 1200px; margin: 20px 0px"
-                >
-                  <div
-                    class="kobweb-box kobweb-align-top-start"
-                    style="width: 100px; margin: 0px 15px 0px 0px"
-                  >
-                    <img
-                      class="silk-image"
-                      style="width: 80px; height: 80px; object-fit: contain"
-                      src="adenasoft.jpg"
-                      alt=""
-                    />
-                  </div>
-                  <div
-                    class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                    style="margin: 0px 15px 0px 0px; height: 100%"
-                  >
-                    <p
-                      style="
-                        width: 360px;
-                        margin: 0px;
-                        font-size: 15px;
-                        font-weight: bold;
-                        color: rgb(18, 29, 52);
-                      "
-                    >
-                      Adena software, iOS developer
-                    </p>
-                    <p
-                      style="
-                        margin: 0px;
-                        font-size: 14px;
-                        font-weight: normal;
-                        color: rgb(18, 29, 52);
-                      "
-                    >
-                      - Sticpay iOS application development
-                    </p>
-                    <p
-                      style="
-                        margin: 0px;
-                        font-size: 14px;
-                        font-weight: normal;
-                        color: rgb(18, 29, 52);
-                      "
-                    >
-                      - Sticpay react-native application development
-                    </p>
-                  </div>
-                  <p
-                    style="
-                      margin: 0px;
-                      width: 400px;
-                      text-align: start;
-                      font-size: 16px;
-                      font-weight: bold;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    Aug 2019 ~ Apr 2022 (2 years and 8 months)
-                  </p>
-                </div>
-                <div
-                  class="kobweb-row kobweb-arrange-center kobweb-align-center-vert"
-                  style="width: 1200px; margin: 20px 0px"
-                >
-                  <div
-                    class="kobweb-box kobweb-align-top-start"
-                    style="width: 100px; margin: 0px 15px 0px 0px"
-                  >
-                    <img
-                      class="silk-image"
-                      style="width: 80px; height: 80px; object-fit: contain"
-                      src="sv.png"
-                      alt=""
-                    />
-                  </div>
-                  <div
-                    class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                    style="margin: 0px 15px 0px 0px; height: 100%"
-                  >
-                    <p
-                      style="
-                        width: 360px;
-                        margin: 0px;
-                        font-size: 15px;
-                        font-weight: bold;
-                        color: rgb(18, 29, 52);
-                      "
-                    >
-                      SV corporation, Android developer
-                    </p>
-                    <p
-                      style="
-                        margin: 0px;
-                        font-size: 14px;
-                        font-weight: normal;
-                        color: rgb(18, 29, 52);
-                      "
-                    >
-                      - SuperVank Android application development
-                    </p>
-                  </div>
-                  <p
-                    style="
-                      margin: 0px;
-                      width: 400px;
-                      text-align: start;
-                      font-size: 16px;
-                      font-weight: bold;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    Mar 2018 ~ Apr 2019 (1 year and 2 months)
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="kobweb-col kobweb-arrange-top kobweb-align-start"
-            style="width: 60%; padding: 50px 0px 0px"
-            id="project"
-          >
-            <div
-              class="kobweb-col kobweb-arrange-top kobweb-align-start"
-              style="width: 100%; padding: 50px 0px 150px"
-            >
-              <div
-                class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz"
-                style="width: 100%"
-              >
-                <p
-                  style="
-                    width: 100%;
-                    text-align: center;
-                    letter-spacing: 3px;
-                    margin: 30px 0px 10px;
-                    font-size: 40px;
-                    font-weight: bold;
-                    color: rgb(0, 167, 142);
-                    transition: margin 300ms ease 0s;
-                  "
-                >
-                  Projects
-                </p>
-                <div
-                  class="kobweb-box kobweb-align-top-start"
-                  style="
-                    height: 2px;
-                    width: 80px;
-                    margin: 0px;
-                    background-color: rgb(0, 167, 142);
-                    border-radius: 50px;
-                  "
-                ></div>
-                <p
-                  style="
-                    font-size: 20px;
-                    margin: 20px 0px 0px;
-                    text-align: center;
-                    font-weight: normal;
-                    color: rgb(18, 29, 52);
-                  "
-                >
-                  Here you will find industrial projects I committed each
-                  project containing its own link
-                </p>
-              </div>
-              <div
-                class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                style="width: 100%"
-              >
-                <div
-                  class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                  style="width: 100%; margin: 70px 0px 0px"
-                >
-                  <p
-                    style="
-                      width: 100%;
-                      margin: 0px;
-                      font-size: 26px;
-                      font-weight: bold;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    AutoCapture iOS, AutoCompose macOS application
-                  </p>
-                  <p
-                    style="
-                      width: 100%;
-                      margin: 5px 0px 15px;
-                      font-size: 18px;
-                      font-weight: 500;
-                      color: rgb(169, 166, 167);
-                    "
-                  >
-                    An app that helps upload images and videos of used cars.
-                    Targeted towards retailers
-                  </p>
-                </div>
-                <div
-                  class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                  style="width: 100%; margin: 5px 0px"
-                >
-                  <p
-                    style="
-                      width: 100%;
-                      margin: 0px;
-                      font-size: 20px;
-                      font-weight: normal;
-                      font-style: italic;
-                      color: rgb(89, 136, 175);
-                    "
-                  >
-                    Technologies: OpenCV, Canon SDK, Bluetooth, GCD web server,
-                    Firebase MLKit
-                  </p>
-                </div>
-                <div
-                  class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                  style="width: 100%; margin: 0px"
-                >
-                  <p
-                    style="
-                      margin: 0px 0px 3px;
-                      font-size: 17px;
-                      font-weight: bold;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    - Performance improvement, migration and maintenance of the
-                    app
-                  </p>
-                  <p
-                    style="
-                      margin: 0px 0px 3px;
-                      font-size: 17px;
-                      font-weight: normal;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    - MacOS, Canon SDK, blueTooth integration work
-                  </p>
-                  <p
-                    style="
-                      margin: 0px 0px 3px;
-                      font-size: 17px;
-                      font-weight: normal;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    - Migrating the app from Objective-C to Swift with the help
-                    of SwiftRewriter. About 50% of the whole code is migrated
-                  </p>
-                  <p
-                    style="
-                      margin: 0px 0px 3px;
-                      font-size: 17px;
-                      font-weight: normal;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    - Added the feature that detect cars and subsequently cut
-                    them while maintaining the same margin on each side.
-                    Concatenated images to make 360 view of the car
-                  </p>
-                  <p
-                    style="
-                      margin: 0px 0px 3px;
-                      font-size: 17px;
-                      font-weight: normal;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    - Added the feature of adjusting photo brightness,
-                    temperature, and zoom
-                  </p>
-                </div>
-                <div
-                  class="kobweb-row kobweb-arrange-center kobweb-align-center-vert"
-                  style="width: 100%; margin: 30px 0px 0px"
-                >
-                  <div
-                    class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz"
-                  >
-                    <img
-                      class="silk-image"
-                      style="
-                        width: 300px;
-                        margin: 0px 0px 20px;
-                        object-fit: contain;
-                      "
-                      src="cutAppCars.PNG"
-                      alt=""
-                    /><span
-                      class="silk-span-text"
-                      style="font-size: 14px; font-weight: 600"
-                      >Images captured by macOS and Canon SDK</span
-                    >
-                  </div>
-                  <span
-                    class="fas fa-arrow-right"
-                    style="margin: 0px 15px"
-                  ></span>
-                  <div
-                    class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz"
-                  >
-                    <img
-                      class="silk-image"
-                      style="
-                        width: 300px;
-                        margin: 0px 0px 5px;
-                        object-fit: contain;
-                      "
-                      src="carsOnWeb.PNG"
-                      alt=""
-                    /><span
-                      class="silk-span-text"
-                      style="font-size: 14px; font-weight: 600"
-                      >Car images on Web</span
-                    >
-                  </div>
-                  <span
-                    class="fas fa-arrow-right"
-                    style="margin: 0px 15px"
-                  ></span>
-                  <div
-                    class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz"
-                  >
-                    <img
-                      class="silk-image"
-                      style="
-                        width: 300px;
-                        margin: 0px 0px 20px;
-                        object-fit: contain;
-                      "
-                      src="rotatingCar.gif"
-                      alt=""
-                    /><span
-                      class="silk-span-text"
-                      style="font-size: 14px; font-weight: 600"
-                      >360 View of the car</span
-                    >
-                  </div>
-                </div>
-                <div
-                  class="kobweb-row kobweb-arrange-center kobweb-align-top"
-                  style="width: 100%; margin: 30px 0px 0px"
-                >
-                  <a
-                    class="silk-link navigation-item"
-                    style="
-                      min-width: 200px;
-                      padding: 15px 20px;
-                      color: white;
-                      text-align: center;
-                      font-size: 20px;
-                      font-weight: bold;
-                      text-decoration-line: none;
-                      border-radius: 10px;
-                      background-color: rgb(89, 136, 175);
-                    "
-                    href="https://apps.apple.com/gb/app/aos-autocapture/id1115610872"
-                    >iOS</a
-                  ><span class="silk-span-text" style="width: 50px"></span
-                  ><a
-                    class="silk-link navigation-item"
-                    style="
-                      min-width: 200px;
-                      padding: 15px 20px;
-                      color: white;
-                      text-align: center;
-                      font-size: 20px;
-                      font-weight: bold;
-                      text-decoration-line: none;
-                      border-radius: 10px;
-                      background-color: rgb(89, 136, 175);
-                    "
-                    href="https://download.aos.tv"
-                    >macOS</a
-                  >
-                </div>
-              </div>
-              <div
-                class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                style="margin: 70px 0px 0px; width: 100%"
-              >
-                <div
-                  class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                  style="width: 100%"
-                >
-                  <p
-                    style="
-                      width: 100%;
-                      margin: 0px;
-                      font-size: 26px;
-                      font-weight: bold;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    Sticpay iOS application
-                  </p>
-                  <p
-                    style="
-                      width: 100%;
-                      margin: 5px 0px 15px;
-                      font-size: 18px;
-                      font-weight: 500;
-                      color: rgb(169, 166, 167);
-                    "
-                  >
-                    Payment and money transfer application
-                  </p>
-                </div>
-                <div
-                  class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                  style="width: 100%; margin: 5px 0px"
-                >
-                  <p
-                    style="
-                      width: 100%;
-                      margin: 0px;
-                      font-size: 20px;
-                      font-weight: normal;
-                      font-style: italic;
-                      color: rgb(89, 136, 175);
-                    "
-                  >
-                    Technologies: MVVM, SnapKit, RxSwift, Alamofire, SwiftLint,
-                    Firebase
-                  </p>
-                </div>
-                <div
-                  class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                  style="width: 100%; margin: 0px"
-                >
-                  <p
-                    style="
-                      margin: 0px 0px 3px;
-                      font-size: 17px;
-                      font-weight: bold;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    - Converted Sticpay react-native Application to iOS native
-                  </p>
-                  <p
-                    style="
-                      margin: 0px 0px 3px;
-                      font-size: 17px;
-                      font-weight: normal;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    - Developed sign-up and sign-in, automatic sign-in feature
-                    using Oauth
-                  </p>
-                  <p
-                    style="
-                      margin: 0px 0px 3px;
-                      font-size: 17px;
-                      font-weight: normal;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    - Developed wallet management, payment and payment history,
-                    currency exchange feature
-                  </p>
-                  <p
-                    style="
-                      margin: 0px 0px 3px;
-                      font-size: 17px;
-                      font-weight: normal;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    - Separated release and management of normal app/China app
-                    through multiple targets
-                  </p>
-                  <p
-                    style="
-                      margin: 0px 0px 3px;
-                      font-size: 17px;
-                      font-weight: normal;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    - Developed from ground to the end including architecting,
-                    development, distribution and maintenance
-                  </p>
-                </div>
-              </div>
-              <div
-                class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                style="margin: 60px 0px 0px; width: 100%"
-              >
-                <p
-                  style="
-                    width: 100%;
-                    margin: 0px;
-                    font-size: 26px;
-                    font-weight: bold;
-                    color: rgb(18, 29, 52);
-                  "
-                >
-                  Sticpay React native application
-                </p>
-              </div>
-              <div
-                class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                style="width: 100%; margin: 5px 0px"
-              >
-                <p
-                  style="
-                    width: 100%;
-                    margin: 0px;
-                    font-size: 20px;
-                    font-weight: normal;
-                    font-style: italic;
-                    color: rgb(89, 136, 175);
-                  "
-                >
-                  Technologies: ES6, flow, Axios, EsLint, Prettier, Jest
-                </p>
-              </div>
-              <div
-                class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                style="width: 100%; margin: 0px"
-              >
-                <p
-                  style="
-                    margin: 0px 0px 3px;
-                    font-size: 17px;
-                    font-weight: bold;
-                    color: rgb(18, 29, 52);
-                  "
-                >
-                  - Converted Sticpay web-view based application to React native
-                  application with a senior frontend developer
-                </p>
-                <p
-                  style="
-                    margin: 0px 0px 3px;
-                    font-size: 17px;
-                    font-weight: normal;
-                    color: rgb(18, 29, 52);
-                  "
-                >
-                  - Managed states and asynchronous operations using redux,
-                  async/await, promise
-                </p>
-                <p
-                  style="
-                    margin: 0px 0px 3px;
-                    font-size: 17px;
-                    font-weight: normal;
-                    color: rgb(18, 29, 52);
-                  "
-                >
-                  - Developed native modules using Java and Objective-C
-                </p>
-                <p
-                  style="
-                    margin: 0px 0px 3px;
-                    font-size: 17px;
-                    font-weight: normal;
-                    color: rgb(18, 29, 52);
-                  "
-                >
-                  - Managed the crash rate of the app below 0.3% based on
-                  firebase crashlytics
-                </p>
-                <p
-                  style="
-                    margin: 0px 0px 3px;
-                    font-size: 17px;
-                    font-weight: normal;
-                    color: rgb(18, 29, 52);
-                  "
-                >
-                  - Current android version of STICPAY is developed and
-                  maintained by an android developer
-                </p>
-              </div>
-              <div
-                class="kobweb-row kobweb-arrange-space-evenly kobweb-align-center-vert"
-                style="margin: 30px 0px 0px; width: 100%"
-              >
-                <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
-                  <img
-                    class="silk-image"
-                    style="
-                      width: 150px;
-                      height: 270px;
-                      margin: 0px 10px 0px 0px;
-                      object-fit: contain;
-                    "
-                    src="sticpay1.jpg"
-                    alt=""
-                  />
-                  <img
-                    class="silk-image"
-                    style="
-                      width: 150px;
-                      height: 270px;
-                      margin: 0px 10px 0px 0px;
-                      object-fit: contain;
-                    "
-                    src="sticpay2.jpg"
-                    alt=""
-                  />
-                  <img
-                    class="silk-image"
-                    style="
-                      width: 150px;
-                      height: 270px;
-                      margin: 0px 10px 0px 0px;
-                      object-fit: contain;
-                    "
-                    src="sticpay3.jpg"
-                    alt=""
-                  />
-                  <img
-                    class="silk-image"
-                    style="
-                      width: 150px;
-                      height: 270px;
-                      margin: 0px 10px 0px 0px;
-                      object-fit: contain;
-                    "
-                    src="sticpay4.jpg"
-                    alt=""
-                  />
-                </div>
-                <div class="kobweb-col kobweb-arrange-top kobweb-align-start">
-                  <a
-                    class="silk-link navigation-item"
-                    style="
-                      min-width: 200px;
-                      padding: 15px 20px;
-                      color: white;
-                      text-align: center;
-                      font-size: 20px;
-                      font-weight: bold;
-                      text-decoration-line: none;
-                      border-radius: 10px;
-                      background-color: rgb(89, 136, 175);
-                    "
-                    href="https://play.google.com/store/apps/details?id=com.sticpay.app.sticpay"
-                    >Android</a
-                  ><span class="silk-span-text" style="height: 30px"></span
-                  ><a
-                    class="silk-link navigation-item"
-                    style="
-                      min-width: 200px;
-                      padding: 15px 20px;
-                      color: white;
-                      text-align: center;
-                      font-size: 20px;
-                      font-weight: bold;
-                      text-decoration-line: none;
-                      border-radius: 10px;
-                      background-color: rgb(89, 136, 175);
-                    "
-                    href="https://apps.apple.com/gb/app/sticpay/id1274956968"
-                    >iOS</a
-                  >
-                </div>
-              </div>
-              <div
-                class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                style="margin: 80px 0px 0px; width: 100%"
-              >
-                <div
-                  class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                  style="width: 100%"
-                >
-                  <p
-                    style="
-                      width: 100%;
-                      margin: 0px;
-                      font-size: 26px;
-                      font-weight: bold;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    Supervank Android application
-                  </p>
-                  <p
-                    style="
-                      width: 100%;
-                      margin: 5px 0px 15px;
-                      font-size: 18px;
-                      font-weight: 500;
-                      color: rgb(169, 166, 167);
-                    "
-                  >
-                    Reward app based on real world’s stock market. Points are
-                    needed to invest
-                  </p>
-                </div>
-                <div
-                  class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                  style="width: 100%; margin: 5px 0px"
-                >
-                  <p
-                    style="
-                      width: 100%;
-                      margin: 0px;
-                      font-size: 20px;
-                      font-weight: normal;
-                      font-style: italic;
-                      color: rgb(89, 136, 175);
-                    "
-                  >
-                    Technologies: MVC, JAVA, AD SDK, Camera SDK, Glide, Contents
-                    provider
-                  </p>
-                </div>
-                <div
-                  class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                  style="width: 100%; margin: 0px"
-                >
-                  <p
-                    style="
-                      margin: 0px 0px 3px;
-                      font-size: 17px;
-                      font-weight: bold;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    - Developed a pedometer using a gyro sensor. It calculates
-                    total steps, calories burned, total distance by
-                    day/month/year
-                  </p>
-                  <p
-                    style="
-                      margin: 0px 0px 3px;
-                      font-size: 17px;
-                      font-weight: normal;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    - Developed screen for investment results
-                  </p>
-                  <p
-                    style="
-                      margin: 0px 0px 3px;
-                      font-size: 17px;
-                      font-weight: normal;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    - Implemented AD SDK from various vendors such as facebook,
-                    unity, google. Rewards are given after users finished
-                    watching the ads
-                  </p>
-                  <p
-                    style="
-                      margin: 0px 0px 3px;
-                      font-size: 17px;
-                      font-weight: normal;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    - Developed custom gallery using contents provider and
-                    recyclerview
-                  </p>
-                  <p
-                    style="
-                      margin: 0px 0px 3px;
-                      font-size: 17px;
-                      font-weight: normal;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    - Developed custom camera that is able to zoom-in, zoom-out,
-                    cropping using Camera api
-                  </p>
-                  <p
-                    style="
-                      margin: 0px 0px 3px;
-                      font-size: 17px;
-                      font-weight: normal;
-                      color: red;
-                    "
-                  >
-                    - Due to the company's policy, this app is currently down
-                    from the play store
-                  </p>
-                </div>
-              </div>
-              <div
-                class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz"
-                style="width: 100%; margin: 60px 0px 0px"
-              >
-                <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
-                  <img
-                    class="silk-image"
-                    style="
-                      width: 150px;
-                      height: 270px;
-                      margin: 0px 10px 0px 0px;
-                      object-fit: contain;
-                    "
-                    src="supervank1.png"
-                    alt=""
-                  />
-                  <img
-                    class="silk-image"
-                    style="
-                      width: 150px;
-                      height: 270px;
-                      margin: 0px 10px 0px 0px;
-                      object-fit: contain;
-                    "
-                    src="supervank2.png"
-                    alt=""
-                  />
-                  <img
-                    class="silk-image"
-                    style="
-                      width: 150px;
-                      height: 270px;
-                      margin: 0px 10px 0px 0px;
-                      object-fit: contain;
-                    "
-                    src="supervank3.png"
-                    alt=""
-                  />
-                  <img
-                    class="silk-image"
-                    style="
-                      width: 150px;
-                      height: 270px;
-                      margin: 0px 10px 0px 0px;
-                      object-fit: contain;
-                    "
-                    src="supervank4.png"
-                    alt=""
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz"
-            style="
-              width: 100%;
-              padding: 50px 0px;
-              background-color: rgb(249, 249, 249);
-            "
-            id="personal"
-          >
-            <div
-              class="kobweb-col kobweb-arrange-top kobweb-align-start"
-              style="width: 60%"
-            >
-              <div
-                class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                style="width: 100%; padding: 0px 0px 100px"
-              >
-                <div
-                  class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz"
-                  style="width: 100%; margin: 60px 0px 0px"
-                >
-                  <p
-                    style="
-                      width: 100%;
-                      text-align: center;
-                      letter-spacing: 3px;
-                      margin: 30px 0px 10px;
-                      font-size: 40px;
-                      font-weight: bold;
-                      color: rgb(0, 167, 142);
-                      transition: margin 300ms ease 0s;
-                    "
-                  >
-                    Personal Projects
-                  </p>
-                  <div
-                    class="kobweb-box kobweb-align-top-start"
-                    style="
-                      height: 2px;
-                      width: 80px;
-                      margin: 0px;
-                      background-color: rgb(0, 167, 142);
-                      border-radius: 50px;
-                    "
-                  ></div>
-                  <p
-                    style="
-                      font-size: 20px;
-                      margin: 20px 0px 0px;
-                      text-align: center;
-                      font-weight: normal;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    Here you will find my personal projects that are made 100%
-                    by myself.
-                  </p>
-                </div>
-                <div
-                  class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                  style="width: 100%"
-                >
-                  <div
-                    class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                    style="width: 100%; margin: 70px 0px 0px"
-                  >
-                    <p
-                      style="
-                        width: 100%;
-                        margin: 0px;
-                        font-size: 26px;
-                        font-weight: bold;
-                        color: rgb(18, 29, 52);
-                      "
-                    >
-                      Scan to doc iOS application
-                    </p>
-                    <p
-                      style="
-                        width: 100%;
-                        margin: 5px 0px 15px;
-                        font-size: 18px;
-                        font-weight: 500;
-                        color: rgb(169, 166, 167);
-                      "
-                    >
-                      An app that helps user to make pdf using their photos or
-                      other materials, then share them
-                    </p>
-                  </div>
-                  <div
-                    class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                    style="width: 100%; margin: 5px 0px"
-                  >
-                    <p
-                      style="
-                        width: 100%;
-                        margin: 0px;
-                        font-size: 20px;
-                        font-weight: normal;
-                        font-style: italic;
-                        color: rgb(89, 136, 175);
-                      "
-                    >
-                      Technologies: OpenCV, Objective-C/C++, RxSwift, SnapKit
-                    </p>
-                  </div>
-                  <div
-                    class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                    style="width: 100%; margin: 0px"
-                  >
-                    <p
-                      style="
-                        margin: 0px 0px 3px;
-                        font-size: 17px;
-                        font-weight: normal;
-                        color: rgb(18, 29, 52);
-                      "
-                    >
-                      - Created iOS application, which enables users to scan and
-                      share photos materials using RxSwift, RxCocoa, OpenCV,
-                      Objective-C/C++, and Firebase
-                    </p>
-                    <p
-                      style="
-                        margin: 0px 0px 3px;
-                        font-size: 17px;
-                        font-weight: normal;
-                        color: rgb(18, 29, 52);
-                      "
-                    >
-                      - Generated drawing feature using PencilKit, sharpening
-                      and brightening feature using OpenCV
-                    </p>
-                    <p
-                      style="
-                        margin: 0px 0px 3px;
-                        font-size: 17px;
-                        font-weight: normal;
-                        color: rgb(18, 29, 52);
-                      "
-                    >
-                      - Added AVFoundation to capture and save materials as well
-                      as perspective transformation to unfold scanned areas of
-                      materials
-                    </p>
-                    <p
-                      style="
-                        margin: 0px 0px 3px;
-                        font-size: 17px;
-                        font-weight: normal;
-                        color: rgb(18, 29, 52);
-                      "
-                    >
-                      - Added sharing feature via air drop, share extension, and
-                      app group
-                    </p>
-                  </div>
-                  <div
-                    class="kobweb-row kobweb-arrange-space-evenly kobweb-align-center-vert"
-                    style="margin: 40px 0px 0px; width: 100%"
-                  >
-                    <div
-                      class="kobweb-row kobweb-arrange-start kobweb-align-top"
-                    >
-                      <img
-                        class="silk-image"
-                        style="
-                          width: 150px;
-                          height: 270px;
-                          margin: 0px 10px 0px 0px;
-                          object-fit: contain;
-                        "
-                        src="scanToDoc1.jpg"
-                        alt=""
-                      />
-                      <img
-                        class="silk-image"
-                        style="
-                          width: 150px;
-                          height: 270px;
-                          margin: 0px 10px 0px 0px;
-                          object-fit: contain;
-                        "
-                        src="scanToDoc2.jpg"
-                        alt=""
-                      />
-                      <img
-                        class="silk-image"
-                        style="
-                          margin: 0px 20px 0px 0px;
-                          width: 200px;
-                          height: 270px;
-                        "
-                        src="shareBook.gif"
-                        alt=""
-                      />
-                      <img
-                        class="silk-image"
-                        style="
-                          width: 150px;
-                          height: 270px;
-                          margin: 0px 10px 0px 0px;
-                          object-fit: contain;
-                        "
-                        src="scanningBooks.gif"
-                        alt=""
-                      />
-                    </div>
-                    <div
-                      class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                    >
-                      <a
-                        class="silk-link navigation-item"
-                        style="
-                          min-width: 200px;
-                          padding: 15px 20px;
-                          color: white;
-                          text-align: center;
-                          font-size: 20px;
-                          font-weight: bold;
-                          text-decoration-line: none;
-                          border-radius: 10px;
-                          background-color: rgb(89, 136, 175);
-                        "
-                        href="https://apps.apple.com/gb/app/scan-to-doc/id1542458261"
-                        >iOS</a
-                      >
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                  style="margin: 60px 0px 0px; width: 100%"
-                >
-                  <div
-                    class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                    style="width: 100%"
-                  >
-                    <p
-                      style="
-                        width: 100%;
-                        margin: 0px;
-                        font-size: 26px;
-                        font-weight: bold;
-                        color: rgb(18, 29, 52);
-                      "
-                    >
-                      BG Rubber
-                    </p>
-                    <p
-                      style="
-                        width: 100%;
-                        margin: 5px 0px 15px;
-                        font-size: 18px;
-                        font-weight: 500;
-                        color: rgb(169, 166, 167);
-                      "
-                    >
-                      An app that helps user to remove background of an image,
-                      either automatically or manually
-                    </p>
-                  </div>
-                  <div
-                    class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                    style="width: 100%; margin: 5px 0px"
-                  >
-                    <p
-                      style="
-                        width: 100%;
-                        margin: 0px;
-                        font-size: 20px;
-                        font-weight: normal;
-                        font-style: italic;
-                        color: rgb(89, 136, 175);
-                      "
-                    >
-                      Technologies: OpenCV, SnapKit, Combine, CoreML
-                    </p>
-                  </div>
-                  <div
-                    class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                    style="width: 100%; margin: 0px"
-                  >
-                    <p
-                      style="
-                        margin: 0px 0px 3px;
-                        font-size: 17px;
-                        font-weight: normal;
-                        color: rgb(18, 29, 52);
-                      "
-                    >
-                      - Auto removal of background image using CoreML
-                    </p>
-                    <p
-                      style="
-                        margin: 0px 0px 3px;
-                        font-size: 17px;
-                        font-weight: normal;
-                        color: rgb(18, 29, 52);
-                      "
-                    >
-                      - Zoom In/Out and background removal/restoration features
-                      using Gesture Recognizer
-                    </p>
-                    <p
-                      style="
-                        margin: 0px 0px 3px;
-                        font-size: 17px;
-                        font-weight: normal;
-                        color: rgb(18, 29, 52);
-                      "
-                    >
-                      - Completed image saving feature
-                    </p>
-                  </div>
-                  <div
-                    class="kobweb-row kobweb-arrange-space-evenly kobweb-align-center-vert"
-                    style="margin: 40px 0px 0px; width: 100%"
-                  >
-                    <img
-                      class="silk-image"
-                      style="
-                        width: 480px;
-                        height: 270px;
-                        margin: 0px 20px 0px 0px;
-                        object-fit: contain;
-                      "
-                      src="bgRubberPreview.gif"
-                      alt=""
-                    />
-                    <div
-                      class="kobweb-col kobweb-arrange-top kobweb-align-start"
-                    >
-                      <a
-                        class="silk-link navigation-item"
-                        style="
-                          min-width: 200px;
-                          padding: 15px 20px;
-                          color: white;
-                          text-align: center;
-                          font-size: 20px;
-                          font-weight: bold;
-                          text-decoration-line: none;
-                          border-radius: 10px;
-                          background-color: rgb(89, 136, 175);
-                        "
-                        href="https://apps.apple.com/gb/app/bg-rubber-background-remover/id6444268627?mt=12"
-                        >macOS</a
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="kobweb-col kobweb-arrange-top kobweb-align-start"
-            style="width: 60%"
-            id="education"
-          >
-            <div
-              class="kobweb-col kobweb-arrange-top kobweb-align-start"
-              style="width: 100%; margin: 0px 0px 20px"
-            >
-              <div
-                class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz"
-                style="width: 100%; margin: 60px 0px 20px"
-              >
-                <p
-                  style="
-                    width: 100%;
-                    text-align: center;
-                    letter-spacing: 3px;
-                    margin: 30px 0px 10px;
-                    font-size: 40px;
-                    font-weight: bold;
-                    color: rgb(0, 167, 142);
-                    transition: margin 300ms ease 0s;
-                  "
-                >
-                  Education
-                </p>
-                <div
-                  class="kobweb-box kobweb-align-top-start"
-                  style="
-                    height: 2px;
-                    width: 80px;
-                    margin: 0px;
-                    background-color: rgb(0, 167, 142);
-                    border-radius: 50px;
-                  "
-                ></div>
-              </div>
-              <div
-                class="kobweb-row kobweb-arrange-start kobweb-align-top"
-                style="margin: 30px 0px 100px"
-              >
-                <p
-                  style="
-                    width: 300px;
-                    margin: 0px;
-                    font-size: 20px;
-                    font-weight: bold;
-                    color: rgb(18, 29, 52);
-                  "
-                >
-                  2011 - 2017
-                </p>
-                <div class="kobweb-col kobweb-arrange-top kobweb-align-start">
-                  <p
-                    style="
-                      margin: 0px;
-                      font-size: 20px;
-                      font-weight: normal;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    Bachelor of information System, Hanyang University, Seoul,
-                    South Korea
-                  </p>
-                  <p
-                    style="
-                      margin: 5px 0px 0px;
-                      font-size: 20px;
-                      font-weight: bold;
-                      color: rgb(18, 29, 52);
-                    "
-                  >
-                    GPA: 3.87 / 4.5
-                  </p>
-                  <div class="kobweb-col kobweb-arrange-top kobweb-align-start">
-                    <p
-                      style="
-                        width: 100%;
-                        margin: 5px 0px 0px;
-                        font-size: 16px;
-                        font-weight: normal;
-                        color: rgb(18, 29, 52);
-                      "
-                    >
-                      Courses: C++, Java, Data structure, Database system,
-                      Operating System, System planning, etc
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <title>Portfolio</title> 
+  <meta content="Powered by Kobweb" name="description"> 
+  <link href="/portfolio/favicon.ico" rel="icon"> 
+  <meta content="width=device-width, initial-scale=1" name="viewport"> 
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"> 
+ </head> 
+ <body> 
+  <div id="root" style="width: 100%; height: 100%; --silk-background-color: rgb(255, 255, 255); --silk-color: rgb(0, 0, 0); --silk-border-color: rgb(0, 0, 0); --silk-button-background-default-color: rgb(204, 204, 204); --silk-button-background-focus-color: rgb(100, 149, 237); --silk-button-background-hover-color: rgb(163, 163, 163); --silk-button-background-pressed-color: rgb(122, 122, 122); --silk-button-color: rgb(0, 0, 0); --silk-divider-color: rgb(0, 0, 0); --silk-link-default-color: rgb(0, 0, 255); --silk-link-visited-color: rgb(128, 0, 128); --overlay-background-color: rgba(0, 0, 0, 0.4980392156862745); --silk-surface-background-color: rgb(255, 255, 255); --silk-surface-color: rgb(0, 0, 0); --silk-switch-thumb-color: rgb(255, 255, 255); --silk-tab-color: rgb(0, 0, 0); --silk-tab-background-color: rgb(255, 255, 255); --silk-tab-border-color: rgba(0, 0, 0, 0.2); --silk-tab-disabled-background-color: rgb(255, 255, 255); --silk-tab-hover-background-color: rgb(211, 211, 211); --silk-tab-pressed-background-color: rgb(245, 245, 245); --silk-toc-border-color: rgb(0, 0, 0); --silk-tooltip-background-color: rgb(0, 0, 0); --silk-tooltip-color: rgb(255, 255, 255);">
+   <style>html, body { padding: 0px; margin: 0px; }* { box-sizing: border-box; }</style>
+   <style>.kobweb-box { display: grid; grid-template-columns: minmax(0px, 1fr); grid-template-rows: minmax(0px, 1fr); }.kobweb-box > * { grid-area: 1 / 1 / auto / auto; }.kobweb-box.kobweb-align-top-start { place-items: start; }.kobweb-box.kobweb-align-top-center { place-items: start center; }.kobweb-box.kobweb-align-top-end { place-items: start end; }.kobweb-box.kobweb-align-center-start { place-items: center start; }.kobweb-box.kobweb-align-center { place-items: center; }.kobweb-box.kobweb-align-center-end { place-items: center end; }.kobweb-box.kobweb-align-bottom-start { place-items: end start; }.kobweb-box.kobweb-align-bottom-center { place-items: end center; }.kobweb-box.kobweb-align-bottom-end { place-items: end; }.kobweb-box > .kobweb-align-top-start-self { place-self: start; }.kobweb-box > .kobweb-align-top-center-self { place-self: start center; }.kobweb-box > .kobweb-align-top-end-self { place-self: start end; }.kobweb-box > .kobweb-align-center-start-self { place-self: center start; }.kobweb-box > .kobweb-align-center-self { place-self: center; }.kobweb-box > .kobweb-align-center-end-self { place-self: center end; }.kobweb-box > .kobweb-align-bottom-start-self { place-self: end start; }.kobweb-box > .kobweb-align-bottom-center-self { place-self: end center; }.kobweb-box > .kobweb-align-bottom-end-self { place-self: end; }.kobweb-col { display: flex; flex-direction: column; }.kobweb-col.kobweb-arrange-top { justify-content: flex-start; }.kobweb-col.kobweb-arrange-center { justify-content: center; }.kobweb-col.kobweb-arrange-bottom { justify-content: flex-end; }.kobweb-col.kobweb-arrange-space-evenly { justify-content: space-evenly; }.kobweb-col.kobweb-arrange-space-between { justify-content: space-between; }.kobweb-col.kobweb-arrange-space-around { justify-content: space-around; }.kobweb-col.kobweb-align-start { align-items: flex-start; }.kobweb-col.kobweb-align-center-horiz { align-items: center; }.kobweb-col.kobweb-align-end { align-items: flex-end; }.kobweb-col > .kobweb-align-start-self { align-self: flex-start; }.kobweb-col > .kobweb-align-center-horiz-self { align-self: center; }.kobweb-col > .kobweb-align-end-self { align-self: flex-end; }.kobweb-row { display: flex; flex-direction: row; }.kobweb-row.kobweb-arrange-start { justify-content: flex-start; }.kobweb-row.kobweb-arrange-center { justify-content: center; }.kobweb-row.kobweb-arrange-end { justify-content: flex-end; }.kobweb-row.kobweb-arrange-space-evenly { justify-content: space-evenly; }.kobweb-row.kobweb-arrange-space-between { justify-content: space-between; }.kobweb-row.kobweb-arrange-space-around { justify-content: space-around; }.kobweb-row.kobweb-align-top { align-items: flex-start; }.kobweb-row.kobweb-align-center-vert { align-items: center; }.kobweb-row.kobweb-align-bottom { align-items: flex-end; }.kobweb-row > .kobweb-align-top-self { align-self: flex-start; }.kobweb-row > .kobweb-align-center-vert-self { align-self: center; }.kobweb-row > .kobweb-align-bottom-self { align-self: flex-end; }.kobweb-spacer { flex-grow: 1; }</style>
+   <style>body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; }h1 { font-weight: bold; text-align: center; margin: 0px 0px 1rem; font-size: 3.5rem; }h2 { font-weight: bold; text-align: center; margin: 0px 0px 1rem; font-size: 2.5rem; }h3 { font-weight: bold; text-align: center; margin: 0px 0px 1rem; font-size: 1.5rem; }.silk-button { color: var(--silk-button-color); background-color: var(--silk-button-background-default-color); line-height: 1.2; font-size: 16px; padding: 8px 16px; border-radius: 4px; border-width: 0px; outline: 0px; user-select: none; }.silk-button:hover:not([aria-disabled="true"]) { background-color: var(--silk-button-background-hover-color); cursor: pointer; }.silk-button:focus-visible:not([aria-disabled="true"]) { box-shadow: 0px 0px 0 3px var(--silk-button-background-focus-color); }.silk-button:active:not([aria-disabled="true"]) { background-color: var(--silk-button-background-pressed-color); }.silk-disabled { opacity: 0.5; cursor: not-allowed; }.silk-divider { border-top: 1px solid var(--silk-divider-color); width: 90%; }.silk-link { text-decoration-line: none; }.silk-link:link { color: var(--silk-link-default-color); }.silk-link:visited { color: var(--silk-link-visited-color); }.silk-link:hover { text-decoration-line: underline; }.silk-overlay { background-color: var(--overlay-background-color); }.silk-popup { transition: opacity 150ms ease 0s; }.silk-simple-grid { display: grid; }@media (min-width: 0px) {  .silk-simple-grid { grid-template-columns: repeat(var(--silk-simple-grid-col-count-zero), 1fr); }}@media (min-width: 30rem) {  .silk-simple-grid { grid-template-columns: repeat(var(--silk-simple-grid-col-count-sm), 1fr); }}@media (min-width: 48rem) {  .silk-simple-grid { grid-template-columns: repeat(var(--silk-simple-grid-col-count-md), 1fr); }}@media (min-width: 62rem) {  .silk-simple-grid { grid-template-columns: repeat(var(--silk-simple-grid-col-count-lg), 1fr); }}@media (min-width: 80rem) {  .silk-simple-grid { grid-template-columns: repeat(var(--silk-simple-grid-col-count-xl), 1fr); }}.silk-smooth-color { transition: background-color 200ms ease 0s; }.silk-surface { background-color: var(--silk-surface-background-color); color: var(--silk-surface-color); }.silk-switch-track { width: var(--silk-switch-track-width); min-width: var(--silk-switch-track-width); height: var(--silk-switch-track-height); min-height: var(--silk-switch-track-height); padding: var(--silk-switch-track-padding); border-radius: var(--silk-switch-border-radius, 9999px); background-color: var(--silk-switch-track-background-color); transition: background-color 150ms ease 0s; box-sizing: content-box; }.silk-switch-track:hover:not([aria-disabled="true"]) { cursor: pointer; }.silk-switch-thumb { width: var(--silk-switch-track-height); height: var(--silk-switch-track-height); border-radius: var(--silk-switch-border-radius, 9999px); background-color: rgb(255, 255, 255); translate: var(--silk-switch-thumb-offset); transition: translate 150ms ease 0s; }.tabs-tab-row { width: 100%; border-bottom: var(--silk-tab-border-thickness, 2px) solid var(--silk-tab-border-color); }.tabs-tab { cursor: pointer; transition: background-color 200ms ease 0s, color 200ms ease 0s, border-color 200ms ease 0s; background-color: var(--silk-tab-background-color); color: var(--silk-tab-color); user-select: none; padding: 0.5rem; margin-bottom: calc(-1 * var(--silk-tab-border-thickness, 2px)); border-bottom: var(--silk-tab-border-thickness, 2px) solid var(--silk-tab-border-color); }.tabs-tab[aria-disabled="true"] { background-color: var(--silk-tab-disabled-background-color); cursor: not-allowed; }.tabs-tab:hover:not([aria-disabled="true"]) { background-color: var(--silk-tab-hover-background-color); }.tabs-tab:active:not([aria-disabled="true"]) { background-color: var(--silk-tab-pressed-background-color); }.tabs-panel { padding: 1rem; width: 100%; flex-grow: 1; overflow-y: auto; }.silk-toc { list-style-type: none; text-align: start; padding: 0rem; }.silk-tooltip-arrow { position: absolute; border-width: 5px; border-style: solid; }.silk-tooltip { position: relative; background-color: var(--silk-tooltip-background-color); color: var(--silk-tooltip-color); border-radius: 6px; }.tooltip-text { padding: 5px; }@media not all and (min-width: 0px) {  .silk-display-if-at-least-zero { display: none; }}@media not all and (min-width: 30rem) {  .silk-display-if-at-least-sm { display: none; }}@media not all and (min-width: 48rem) {  .silk-display-if-at-least-md { display: none; }}@media not all and (min-width: 62rem) {  .silk-display-if-at-least-lg { display: none; }}@media not all and (min-width: 80rem) {  .silk-display-if-at-least-xl { display: none; }}@media (min-width: 0px) {  .silk-display-until-zero { display: none; }}@media (min-width: 30rem) {  .silk-display-until-sm { display: none; }}@media (min-width: 48rem) {  .silk-display-until-md { display: none; }}@media (min-width: 62rem) {  .silk-display-until-lg { display: none; }}@media (min-width: 80rem) {  .silk-display-until-xl { display: none; }}.nav-header { width: 100%; position: sticky; top: 0%; }.navigation-item { color: rgb(18, 29, 52); transition: color 200ms ease 0s; }.navigation-item:any-link { color: rgb(18, 29, 52); }.navigation-item:hover { color: rgb(0, 167, 142); }.portfolio-arrow-icon { color: rgb(207, 207, 207); transition: color 200ms ease 0s; }.portfolio-arrow-icon:hover { color: rgb(0, 167, 142); }.silk-image.silk-image-fit-width { width: 100%; object-fit: scale-down; }.silk-link.silk-link-uncolored:link { color: var(--silk-color); }.silk-link.silk-link-uncolored:visited { color: var(--silk-color); }.silk-link.silk-link-undecorated:hover { text-decoration-line: none; }.silk-surface.silk-surface-animated-color { transition: background-color 200ms ease 0s; }.silk-surface.silk-surface-animated-color div { transition: background-color 200ms ease 0s; }.silk-toc.silk-toc-bordered { border-radius: 5px; border: 1px solid var(--silk-toc-border-color); padding: 1rem; }.silk-tooltip-arrow.silk-tooltip-arrow-top-left { margin: -9px 0px 0px 9px; top: 0px; border-color: transparent transparent var(--silk-tooltip-background-color) transparent; }.silk-tooltip-arrow.silk-tooltip-arrow-top { margin: -9px 0px 0px -5px; left: 50%; top: 0px; border-color: transparent transparent var(--silk-tooltip-background-color) transparent; }.silk-tooltip-arrow.silk-tooltip-arrow-top-right { margin: -9px 9px 0px 0px; right: 0px; top: 0px; border-color: transparent transparent var(--silk-tooltip-background-color) transparent; }.silk-tooltip-arrow.silk-tooltip-arrow-left-top { margin: 9px 0px 0px -9px; left: 0px; top: 0px; border-color: transparent var(--silk-tooltip-background-color) transparent transparent; }.silk-tooltip-arrow.silk-tooltip-arrow-left { margin: -5px 0px 0px -9px; left: 0px; top: 50%; border-color: transparent var(--silk-tooltip-background-color) transparent transparent; }.silk-tooltip-arrow.silk-tooltip-arrow-left-bottom { margin: 0px 0px 9px -9px; left: 0px; bottom: 0px; border-color: transparent var(--silk-tooltip-background-color) transparent transparent; }.silk-tooltip-arrow.silk-tooltip-arrow-right-top { margin: 9px -9px 0px 0px; right: 0px; top: 0px; border-color: transparent transparent transparent var(--silk-tooltip-background-color); }.silk-tooltip-arrow.silk-tooltip-arrow-right { margin: -5px -9px 0px 0px; right: 0px; top: 50%; border-color: transparent transparent transparent var(--silk-tooltip-background-color); }.silk-tooltip-arrow.silk-tooltip-arrow-right-bottom { margin: 0px -9px 9px 0px; right: 0px; bottom: 0px; border-color: transparent transparent transparent var(--silk-tooltip-background-color); }.silk-tooltip-arrow.silk-tooltip-arrow-bottom-left { margin: 0px 0px -9px 9px; left: 0px; bottom: 0px; border-color: var(--silk-tooltip-background-color) transparent transparent transparent; }.silk-tooltip-arrow.silk-tooltip-arrow-bottom { margin: 0px 0px -9px -5px; left: 50%; bottom: 0px; border-color: var(--silk-tooltip-background-color) transparent transparent transparent; }.silk-tooltip-arrow.silk-tooltip-arrow-bottom-right { margin: 0px 9px -9px 0px; right: 0px; bottom: 0px; border-color: var(--silk-tooltip-background-color) transparent transparent transparent; }</style>
+   <div class="silk-surface silk-smooth-color kobweb-box kobweb-align-top-start" style="min-height: 100vh;">
+    <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz" style="width: 100%; height: 100%;">
+     <div class="nav-header kobweb-box kobweb-align-top-start">
+      <div class="kobweb-row kobweb-arrange-end kobweb-align-center-vert" style="width: 100%; height: 80px; background-color: white;">
+       <a class="silk-link" style="margin: 0px 25px; font-weight: 500; font-size: 16px; color: rgb(18, 29, 52);" href="#about">About me</a><a class="silk-link" style="margin: 0px 25px; font-weight: 500; font-size: 16px; color: rgb(18, 29, 52);" href="#experience">Experience</a><a class="silk-link" style="margin: 0px 25px; font-weight: 500; font-size: 16px; color: rgb(18, 29, 52);" href="#project">Projects</a><a class="silk-link" style="margin: 0px 25px; font-weight: 500; font-size: 16px; color: rgb(18, 29, 52);" href="#personal">Personal Projects</a><a class="silk-link" style="margin: 0px 25px; font-weight: 500; font-size: 16px; color: rgb(18, 29, 52);" href="#education">Education</a>
       </div>
+     </div>
+     <div class="kobweb-box kobweb-align-top-start" style="width: 100%; height: 100%;">
+      <img class="silk-image" style="width: 100%; height: 920px; object-fit: cover; overflow: hidden;" src="background.jpg" alt="">
+      <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz" style="width: 100%; height: 100%;">
+       <p style="font-weight: bold; font-size: 55px; margin: 230px 20px 0px; color: rgb(18, 29, 52);">Hello, I'm Seungmyun Park</p>
+       <p style="font-weight: normal; font-size: 25px; margin: 20px 20px 5px; color: rgb(18, 29, 52);">I'm a mobile app developer focusing on iOS development,</p>
+       <p style="font-weight: normal; font-size: 25px; margin: 0px 20px; color: rgb(18, 29, 52);">who is also capable of react-native and android development</p>
+       <p style="font-weight: normal; font-size: 17px; margin: 10px 20px 0px; color: rgb(18, 29, 52);">(This site is made in <a class="silk-link" href="https://kobweb.varabyte.com/">Kobweb</a> (Kotlin multiplatform for web using Compose))</p>
+      </div>
+     </div>
+     <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 70%;" id="about">
+      <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz" style="width: 100%; margin: 100px 0px 0px;">
+       <p style="width: 100%; text-align: center; letter-spacing: 3px; margin: 30px 0px 10px; font-size: 40px; font-weight: bold; color: rgb(0, 167, 142); transition: margin 300ms ease 0s;">About me</p>
+       <div class="kobweb-box kobweb-align-top-start" style="height: 2px; width: 80px; margin: 0px; background-color: rgb(0, 167, 142); border-radius: 50px;"></div>
+       <p style="font-size: 20px; margin: 20px 0px 0px; text-align: center; font-weight: normal; color: rgb(18, 29, 52);">Here you would find more about me, and my current skills mostly in terms of programming</p>
+      </div>
+      <div class="kobweb-row kobweb-arrange-space-between kobweb-align-top" style="width: 100%; margin: 50px 0px 150px;">
+       <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="height: 100%;">
+        <p style="margin: 0px 0px 15px; font-weight: bold; line-height: 1.5; font-size: 25px; color: rgb(18, 29, 52);"><span class="silk-span-text">Get to know me</span></p>
+        <p style="margin: 0px 0px 15px; font-weight: normal; line-height: 1.5; font-size: 18px; color: rgb(18, 29, 52);">I am <span class="silk-span-text" style="font-weight: bold;">a skilled mobile client engineer with around 5 years of industry experience.</span>I have a verifiable history of contributing directly to company growth and expansion throughout my career.</p>
+        <p style="margin: 15px 0px; font-weight: normal; line-height: 1.5; font-size: 18px; color: rgb(18, 29, 52);">I have consistently exceeded performance goals and I am adept at achieving maximum operational output with minimal resource expenditure. <span class="silk-span-text" style="font-weight: bold;">My current focus is on iOS development, but I have experience in android and react-native as well.</span></p>
+        <p style="margin: 15px 0px; font-weight: normal; line-height: 1.5; font-size: 18px; color: rgb(18, 29, 52);">I am also highly interested in technologies that help me to make maintainable and elegant mobile application, such as MVVM pattern, reactive programming and unit test.</p>
+       </div><span class="silk-span-text" style="width: 75px;"></span>
+       <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 500px; height: 100%;">
+        <p style="margin: 15px 0px; font-weight: bold; line-height: 1.5; font-size: 25px; color: rgb(18, 29, 52);"><span class="silk-span-text">Proficient</span></p>
+        <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="width: 100%;">
+         <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
+          <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="background-color: rgb(249, 249, 249); border-radius: 10px;">
+           <p style="margin: 15px 20px; min-width: 40px; text-align: center; font-weight: 600; font-size: 15px; color: rgb(18, 29, 52);"><span class="silk-span-text">iOS</span></p>
+          </div><span class="silk-span-text" style="width: 15px;"></span>
+         </div>
+         <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
+          <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="background-color: rgb(249, 249, 249); border-radius: 10px;">
+           <p style="margin: 15px 20px; min-width: 40px; text-align: center; font-weight: 600; font-size: 15px; color: rgb(18, 29, 52);"><span class="silk-span-text">Swift</span></p>
+          </div><span class="silk-span-text" style="width: 15px;"></span>
+         </div>
+         <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
+          <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="background-color: rgb(249, 249, 249); border-radius: 10px;">
+           <p style="margin: 15px 20px; min-width: 40px; text-align: center; font-weight: 600; font-size: 15px; color: rgb(18, 29, 52);"><span class="silk-span-text">Objective-C</span></p>
+          </div><span class="silk-span-text" style="width: 15px;"></span>
+         </div>
+        </div>
+        <p style="margin: 15px 0px; font-weight: bold; line-height: 1.5; font-size: 25px; color: rgb(18, 29, 52);"><span class="silk-span-text">Intermediate</span></p>
+        <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="width: 100%;">
+         <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
+          <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="background-color: rgb(249, 249, 249); border-radius: 10px;">
+           <p style="margin: 15px 20px; min-width: 40px; text-align: center; font-weight: 600; font-size: 15px; color: rgb(18, 29, 52);"><span class="silk-span-text">React-native</span></p>
+          </div><span class="silk-span-text" style="width: 15px;"></span>
+         </div>
+         <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
+          <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="background-color: rgb(249, 249, 249); border-radius: 10px;">
+           <p style="margin: 15px 20px; min-width: 40px; text-align: center; font-weight: 600; font-size: 15px; color: rgb(18, 29, 52);"><span class="silk-span-text">Flow</span></p>
+          </div><span class="silk-span-text" style="width: 15px;"></span>
+         </div>
+         <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
+          <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="background-color: rgb(249, 249, 249); border-radius: 10px;">
+           <p style="margin: 15px 20px; min-width: 40px; text-align: center; font-weight: 600; font-size: 15px; color: rgb(18, 29, 52);"><span class="silk-span-text">ES6</span></p>
+          </div><span class="silk-span-text" style="width: 15px;"></span>
+         </div>
+         <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
+          <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="background-color: rgb(249, 249, 249); border-radius: 10px;">
+           <p style="margin: 15px 20px; min-width: 40px; text-align: center; font-weight: 600; font-size: 15px; color: rgb(18, 29, 52);"><span class="silk-span-text">macOS</span></p>
+          </div><span class="silk-span-text" style="width: 15px;"></span>
+         </div>
+        </div>
+        <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="margin: 10px 0px 0px; width: 100%;">
+         <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
+          <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="background-color: rgb(249, 249, 249); border-radius: 10px;">
+           <p style="margin: 15px 20px; min-width: 40px; text-align: center; font-weight: 600; font-size: 15px; color: rgb(18, 29, 52);"><span class="silk-span-text">Android</span></p>
+          </div><span class="silk-span-text" style="width: 15px;"></span>
+         </div>
+         <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
+          <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="background-color: rgb(249, 249, 249); border-radius: 10px;">
+           <p style="margin: 15px 20px; min-width: 40px; text-align: center; font-weight: 600; font-size: 15px; color: rgb(18, 29, 52);"><span class="silk-span-text">Kotlin</span></p>
+          </div><span class="silk-span-text" style="width: 15px;"></span>
+         </div>
+         <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
+          <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="background-color: rgb(249, 249, 249); border-radius: 10px;">
+           <p style="margin: 15px 20px; min-width: 40px; text-align: center; font-weight: 600; font-size: 15px; color: rgb(18, 29, 52);"><span class="silk-span-text">Java</span></p>
+          </div><span class="silk-span-text" style="width: 15px;"></span>
+         </div>
+         <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
+          <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="background-color: rgb(249, 249, 249); border-radius: 10px;">
+           <p style="margin: 15px 20px; min-width: 40px; text-align: center; font-weight: 600; font-size: 15px; color: rgb(18, 29, 52);"><span class="silk-span-text">OpenCV</span></p>
+          </div><span class="silk-span-text" style="width: 15px;"></span>
+         </div>
+        </div>
+        <p style="margin: 15px 0px; font-weight: bold; line-height: 1.5; font-size: 25px; color: rgb(18, 29, 52);"><span class="silk-span-text">Experienced</span></p>
+        <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="margin: 0px; width: 100%;">
+         <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
+          <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="background-color: rgb(249, 249, 249); border-radius: 10px;">
+           <p style="margin: 15px 20px; min-width: 40px; text-align: center; font-weight: 600; font-size: 15px; color: rgb(18, 29, 52);"><span class="silk-span-text">Kobweb(KMM for web)</span></p>
+          </div><span class="silk-span-text" style="width: 15px;"></span>
+         </div>
+         <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
+          <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="background-color: rgb(249, 249, 249); border-radius: 10px;">
+           <p style="margin: 15px 20px; min-width: 40px; text-align: center; font-weight: 600; font-size: 15px; color: rgb(18, 29, 52);"><span class="silk-span-text">C++</span></p>
+          </div><span class="silk-span-text" style="width: 15px;"></span>
+         </div>
+         <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
+          <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="background-color: rgb(249, 249, 249); border-radius: 10px;">
+           <p style="margin: 15px 20px; min-width: 40px; text-align: center; font-weight: 600; font-size: 15px; color: rgb(18, 29, 52);"><span class="silk-span-text">React</span></p>
+          </div><span class="silk-span-text" style="width: 15px;"></span>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz" style="width: 100%; padding: 50px 0px; background-color: rgb(249, 249, 249);" id="experience">
+      <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 90%;">
+       <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz" style="width: 100%; padding: 50px 0px 0px;">
+        <p style="width: 100%; text-align: center; letter-spacing: 3px; margin: 30px 0px 10px; font-size: 40px; font-weight: bold; color: rgb(0, 167, 142); transition: margin 300ms ease 0s;">Experience</p>
+        <div class="kobweb-box kobweb-align-top-start" style="height: 2px; width: 80px; margin: 0px; background-color: rgb(0, 167, 142); border-radius: 50px;"></div>
+       </div>
+       <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz" style="width: 100%; margin: 50px 0px 0px; padding: 0px 0px 100px;">
+        <div class="kobweb-row kobweb-arrange-center kobweb-align-center-vert" style="width: 1200px; margin: 20px 0px;">
+         <div class="kobweb-box kobweb-align-top-start" style="width: 100px; margin: 0px 15px 0px 0px;">
+          <img class="silk-image" style="width: 80px; height: 80px; object-fit: contain;" src="bca_uk.jpg" alt="">
+         </div>
+         <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="margin: 0px 15px 0px 0px; height: 100%;">
+          <p style="width: 360px; margin: 0px; font-size: 15px; font-weight: bold; color: rgb(18, 29, 52);">BCA UK, iOS developer</p>
+          <p style="margin: 0px; font-size: 14px; font-weight: normal; color: rgb(18, 29, 52);">- AutoCapture iOS application development</p>
+          <p style="margin: 0px; font-size: 14px; font-weight: normal; color: rgb(18, 29, 52);">- AutoComposePro macOS application development</p>
+         </div>
+         <p style="margin: 0px; width: 400px; text-align: start; font-size: 16px; font-weight: bold; color: rgb(18, 29, 52);">May 2022 ~ Present (1 year and 4 months)</p>
+        </div>
+        <div class="kobweb-row kobweb-arrange-center kobweb-align-center-vert" style="width: 1200px; margin: 20px 0px;">
+         <div class="kobweb-box kobweb-align-top-start" style="width: 100px; margin: 0px 15px 0px 0px;">
+          <img class="silk-image" style="width: 80px; height: 80px; object-fit: contain;" src="adenasoft.jpg" alt="">
+         </div>
+         <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="margin: 0px 15px 0px 0px; height: 100%;">
+          <p style="width: 360px; margin: 0px; font-size: 15px; font-weight: bold; color: rgb(18, 29, 52);">Adena software, iOS developer</p>
+          <p style="margin: 0px; font-size: 14px; font-weight: normal; color: rgb(18, 29, 52);">- Sticpay iOS application development</p>
+          <p style="margin: 0px; font-size: 14px; font-weight: normal; color: rgb(18, 29, 52);">- Sticpay react-native application development</p>
+         </div>
+         <p style="margin: 0px; width: 400px; text-align: start; font-size: 16px; font-weight: bold; color: rgb(18, 29, 52);">Aug 2019 ~ Apr 2022 (2 years and 8 months)</p>
+        </div>
+        <div class="kobweb-row kobweb-arrange-center kobweb-align-center-vert" style="width: 1200px; margin: 20px 0px;">
+         <div class="kobweb-box kobweb-align-top-start" style="width: 100px; margin: 0px 15px 0px 0px;">
+          <img class="silk-image" style="width: 80px; height: 80px; object-fit: contain;" src="sv.png" alt="">
+         </div>
+         <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="margin: 0px 15px 0px 0px; height: 100%;">
+          <p style="width: 360px; margin: 0px; font-size: 15px; font-weight: bold; color: rgb(18, 29, 52);">SV corporation, Android developer</p>
+          <p style="margin: 0px; font-size: 14px; font-weight: normal; color: rgb(18, 29, 52);">- SuperVank Android application development</p>
+         </div>
+         <p style="margin: 0px; width: 400px; text-align: start; font-size: 16px; font-weight: bold; color: rgb(18, 29, 52);">Mar 2018 ~ Apr 2019 (1 year and 2 months)</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 60%; padding: 50px 0px 0px;" id="project">
+      <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; padding: 50px 0px 150px;">
+       <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz" style="width: 100%;">
+        <p style="width: 100%; text-align: center; letter-spacing: 3px; margin: 30px 0px 10px; font-size: 40px; font-weight: bold; color: rgb(0, 167, 142); transition: margin 300ms ease 0s;">Projects</p>
+        <div class="kobweb-box kobweb-align-top-start" style="height: 2px; width: 80px; margin: 0px; background-color: rgb(0, 167, 142); border-radius: 50px;"></div>
+        <p style="font-size: 20px; margin: 20px 0px 0px; text-align: center; font-weight: normal; color: rgb(18, 29, 52);">Here you will find industrial projects I committed each project containing its own link</p>
+       </div>
+       <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%;">
+        <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; margin: 70px 0px 0px;">
+         <p style="width: 100%; margin: 0px; font-size: 26px; font-weight: bold; color: rgb(18, 29, 52);">AutoCapture iOS, AutoCompose macOS application</p>
+         <p style="width: 100%; margin: 5px 0px 15px; font-size: 18px; font-weight: 500; color: rgb(169, 166, 167);">An app that helps upload images and videos of used cars. Targeted towards retailers</p>
+        </div>
+        <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; margin: 5px 0px;">
+         <p style="width: 100%; margin: 0px; font-size: 20px; font-weight: normal; font-style: italic; color: rgb(89, 136, 175);">Technologies: OpenCV, Canon SDK, Bluetooth, GCD web server, Firebase MLKit</p>
+        </div>
+        <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; margin: 0px;">
+         <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: bold; color: rgb(18, 29, 52);">- Performance improvement, migration and maintenance of the app</p>
+         <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- MacOS, Canon SDK, blueTooth integration work</p>
+         <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Migrating the app from Objective-C to Swift with the help of SwiftRewriter. About 50% of the whole code is migrated</p>
+         <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Added the feature that detect cars and subsequently cut them while maintaining the same margin on each side. Concatenated images to make 360 view of the car</p>
+         <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Added the feature of adjusting photo brightness, temperature, and zoom</p>
+        </div>
+        <div class="kobweb-row kobweb-arrange-center kobweb-align-center-vert" style="width: 100%; margin: 30px 0px 0px;">
+         <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz">
+          <img class="silk-image" style="width: 300px; margin: 0px 0px 20px; object-fit: contain;" src="cutAppCars.PNG" alt=""><span class="silk-span-text" style="font-size: 14px; font-weight: 600;">Images captured by macOS and Canon SDK</span>
+         </div><span class="fas fa-arrow-right" style="margin: 0px 15px;"></span>
+         <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz">
+          <img class="silk-image" style="width: 300px; margin: 0px 0px 5px; object-fit: contain;" src="carsOnWeb.PNG" alt=""><span class="silk-span-text" style="font-size: 14px; font-weight: 600;">Car images on Web</span>
+         </div><span class="fas fa-arrow-right" style="margin: 0px 15px;"></span>
+         <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz">
+          <img class="silk-image" style="width: 300px; margin: 0px 0px 20px; object-fit: contain;" src="rotatingCar.gif" alt=""><span class="silk-span-text" style="font-size: 14px; font-weight: 600;">360 View of the car</span>
+         </div>
+        </div>
+        <div class="kobweb-row kobweb-arrange-center kobweb-align-top" style="width: 100%; margin: 30px 0px 0px;">
+         <a class="silk-link navigation-item" style="min-width: 200px; padding: 15px 20px; color: white; text-align: center; font-size: 20px; font-weight: bold; text-decoration-line: none; border-radius: 10px; background-color: rgb(89, 136, 175);" href="https://apps.apple.com/gb/app/aos-autocapture/id1115610872">iOS</a><span class="silk-span-text" style="width: 50px;"></span><a class="silk-link navigation-item" style="min-width: 200px; padding: 15px 20px; color: white; text-align: center; font-size: 20px; font-weight: bold; text-decoration-line: none; border-radius: 10px; background-color: rgb(89, 136, 175);" href="https://download.aos.tv">macOS</a>
+        </div>
+       </div>
+       <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="margin: 70px 0px 0px; width: 100%;">
+        <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%;">
+         <p style="width: 100%; margin: 0px; font-size: 26px; font-weight: bold; color: rgb(18, 29, 52);">Sticpay iOS application</p>
+         <p style="width: 100%; margin: 5px 0px 15px; font-size: 18px; font-weight: 500; color: rgb(169, 166, 167);">Payment and money transfer application</p>
+        </div>
+        <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; margin: 5px 0px;">
+         <p style="width: 100%; margin: 0px; font-size: 20px; font-weight: normal; font-style: italic; color: rgb(89, 136, 175);">Technologies: MVVM, SnapKit, RxSwift, Alamofire, SwiftLint, Firebase</p>
+        </div>
+        <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; margin: 0px;">
+         <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: bold; color: rgb(18, 29, 52);">- Converted Sticpay react-native Application to iOS native</p>
+         <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Developed sign-up and sign-in, automatic sign-in feature using Oauth</p>
+         <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Developed wallet management, payment and payment history, currency exchange feature</p>
+         <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Separated release and management of normal app/China app through multiple targets</p>
+         <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Developed from ground to the end including architecting, development, distribution and maintenance</p>
+        </div>
+       </div>
+       <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="margin: 60px 0px 0px; width: 100%;">
+        <p style="width: 100%; margin: 0px; font-size: 26px; font-weight: bold; color: rgb(18, 29, 52);">Sticpay React native application</p>
+       </div>
+       <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; margin: 5px 0px;">
+        <p style="width: 100%; margin: 0px; font-size: 20px; font-weight: normal; font-style: italic; color: rgb(89, 136, 175);">Technologies: ES6, flow, Axios, EsLint, Prettier, Jest</p>
+       </div>
+       <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; margin: 0px;">
+        <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: bold; color: rgb(18, 29, 52);">- Converted Sticpay web-view based application to React native application with a senior frontend developer</p>
+        <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Managed states and asynchronous operations using redux, async/await, promise</p>
+        <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Developed native modules using Java and Objective-C</p>
+        <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Managed the crash rate of the app below 0.3% based on firebase crashlytics</p>
+        <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Current android version of STICPAY is developed and maintained by an android developer</p>
+       </div>
+       <div class="kobweb-row kobweb-arrange-space-evenly kobweb-align-center-vert" style="margin: 30px 0px 0px; width: 100%;">
+        <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
+         <img class="silk-image" style="width: 150px; height: 270px; margin: 0px 10px 0px 0px; object-fit: contain;" src="sticpay1.jpg" alt="">
+         <img class="silk-image" style="width: 150px; height: 270px; margin: 0px 10px 0px 0px; object-fit: contain;" src="sticpay2.jpg" alt="">
+         <img class="silk-image" style="width: 150px; height: 270px; margin: 0px 10px 0px 0px; object-fit: contain;" src="sticpay3.jpg" alt="">
+         <img class="silk-image" style="width: 150px; height: 270px; margin: 0px 10px 0px 0px; object-fit: contain;" src="sticpay4.jpg" alt="">
+        </div>
+        <div class="kobweb-col kobweb-arrange-top kobweb-align-start">
+         <a class="silk-link navigation-item" style="min-width: 200px; padding: 15px 20px; color: white; text-align: center; font-size: 20px; font-weight: bold; text-decoration-line: none; border-radius: 10px; background-color: rgb(89, 136, 175);" href="https://play.google.com/store/apps/details?id=com.sticpay.app.sticpay">Android</a><span class="silk-span-text" style="height: 30px;"></span><a class="silk-link navigation-item" style="min-width: 200px; padding: 15px 20px; color: white; text-align: center; font-size: 20px; font-weight: bold; text-decoration-line: none; border-radius: 10px; background-color: rgb(89, 136, 175);" href="https://apps.apple.com/gb/app/sticpay/id1274956968">iOS</a>
+        </div>
+       </div>
+       <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="margin: 80px 0px 0px; width: 100%;">
+        <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%;">
+         <p style="width: 100%; margin: 0px; font-size: 26px; font-weight: bold; color: rgb(18, 29, 52);">Supervank Android application</p>
+         <p style="width: 100%; margin: 5px 0px 15px; font-size: 18px; font-weight: 500; color: rgb(169, 166, 167);">Reward app based on real world’s stock market. Points are needed to invest</p>
+        </div>
+        <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; margin: 5px 0px;">
+         <p style="width: 100%; margin: 0px; font-size: 20px; font-weight: normal; font-style: italic; color: rgb(89, 136, 175);">Technologies: MVC, JAVA, AD SDK, Camera SDK, Glide, Contents provider</p>
+        </div>
+        <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; margin: 0px;">
+         <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: bold; color: rgb(18, 29, 52);">- Developed a pedometer using a gyro sensor. It calculates total steps, calories burned, total distance by day/month/year</p>
+         <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Developed screen for investment results</p>
+         <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Implemented AD SDK from various vendors such as facebook, unity, google. Rewards are given after users finished watching the ads</p>
+         <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Developed custom gallery using contents provider and recyclerview</p>
+         <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Developed custom camera that is able to zoom-in, zoom-out, cropping using Camera api</p>
+         <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: red;">- Due to the company's policy, this app is currently down from the play store</p>
+        </div>
+       </div>
+       <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz" style="width: 100%; margin: 60px 0px 0px;">
+        <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
+         <img class="silk-image" style="width: 150px; height: 270px; margin: 0px 10px 0px 0px; object-fit: contain;" src="supervank1.png" alt="">
+         <img class="silk-image" style="width: 150px; height: 270px; margin: 0px 10px 0px 0px; object-fit: contain;" src="supervank2.png" alt="">
+         <img class="silk-image" style="width: 150px; height: 270px; margin: 0px 10px 0px 0px; object-fit: contain;" src="supervank3.png" alt="">
+         <img class="silk-image" style="width: 150px; height: 270px; margin: 0px 10px 0px 0px; object-fit: contain;" src="supervank4.png" alt="">
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz" style="width: 100%; padding: 50px 0px; background-color: rgb(249, 249, 249);" id="personal">
+      <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 60%;">
+       <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; padding: 0px 0px 100px;">
+        <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz" style="width: 100%; margin: 60px 0px 0px;">
+         <p style="width: 100%; text-align: center; letter-spacing: 3px; margin: 30px 0px 10px; font-size: 40px; font-weight: bold; color: rgb(0, 167, 142); transition: margin 300ms ease 0s;">Personal Projects</p>
+         <div class="kobweb-box kobweb-align-top-start" style="height: 2px; width: 80px; margin: 0px; background-color: rgb(0, 167, 142); border-radius: 50px;"></div>
+         <p style="font-size: 20px; margin: 20px 0px 0px; text-align: center; font-weight: normal; color: rgb(18, 29, 52);">Here you will find my personal projects that are made 100% by myself.</p>
+        </div>
+        <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%;">
+         <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; margin: 70px 0px 0px;">
+          <p style="width: 100%; margin: 0px; font-size: 26px; font-weight: bold; color: rgb(18, 29, 52);">Scan to doc iOS application</p>
+          <p style="width: 100%; margin: 5px 0px 15px; font-size: 18px; font-weight: 500; color: rgb(169, 166, 167);">An app that helps user to make pdf using their photos or other materials, then share them</p>
+         </div>
+         <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; margin: 5px 0px;">
+          <p style="width: 100%; margin: 0px; font-size: 20px; font-weight: normal; font-style: italic; color: rgb(89, 136, 175);">Technologies: OpenCV, Objective-C/C++, RxSwift, SnapKit</p>
+         </div>
+         <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; margin: 0px;">
+          <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Created iOS application, which enables users to scan and share photos materials using RxSwift, RxCocoa, OpenCV, Objective-C/C++, and Firebase</p>
+          <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Generated drawing feature using PencilKit, sharpening and brightening feature using OpenCV</p>
+          <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Added AVFoundation to capture and save materials as well as perspective transformation to unfold scanned areas of materials</p>
+          <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Added sharing feature via air drop, share extension, and app group</p>
+         </div>
+         <div class="kobweb-row kobweb-arrange-space-evenly kobweb-align-center-vert" style="margin: 40px 0px 0px; width: 100%;">
+          <div class="kobweb-row kobweb-arrange-start kobweb-align-top">
+           <img class="silk-image" style="width: 150px; height: 270px; margin: 0px 10px 0px 0px; object-fit: contain;" src="scanToDoc1.jpg" alt="">
+           <img class="silk-image" style="width: 150px; height: 270px; margin: 0px 10px 0px 0px; object-fit: contain;" src="scanToDoc2.jpg" alt="">
+           <img class="silk-image" style="margin: 0px 20px 0px 0px; width: 200px; height: 270px;" src="shareBook.gif" alt="">
+           <img class="silk-image" style="width: 150px; height: 270px; margin: 0px 10px 0px 0px; object-fit: contain;" src="scanningBooks.gif" alt="">
+          </div>
+          <div class="kobweb-col kobweb-arrange-top kobweb-align-start">
+           <a class="silk-link navigation-item" style="min-width: 200px; padding: 15px 20px; color: white; text-align: center; font-size: 20px; font-weight: bold; text-decoration-line: none; border-radius: 10px; background-color: rgb(89, 136, 175);" href="https://apps.apple.com/gb/app/scan-to-doc/id1542458261">iOS</a>
+          </div>
+         </div>
+        </div>
+        <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="margin: 60px 0px 0px; width: 100%;">
+         <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%;">
+          <p style="width: 100%; margin: 0px; font-size: 26px; font-weight: bold; color: rgb(18, 29, 52);">BG Rubber</p>
+          <p style="width: 100%; margin: 5px 0px 15px; font-size: 18px; font-weight: 500; color: rgb(169, 166, 167);">An app that helps user to remove background of an image, either automatically or manually</p>
+         </div>
+         <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; margin: 5px 0px;">
+          <p style="width: 100%; margin: 0px; font-size: 20px; font-weight: normal; font-style: italic; color: rgb(89, 136, 175);">Technologies: OpenCV, SnapKit, Combine, CoreML</p>
+         </div>
+         <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; margin: 0px;">
+          <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Auto removal of background image using CoreML</p>
+          <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Zoom In/Out and background removal/restoration features using Gesture Recognizer</p>
+          <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Completed image saving feature</p>
+         </div>
+         <div class="kobweb-row kobweb-arrange-space-evenly kobweb-align-center-vert" style="margin: 40px 0px 0px; width: 100%;">
+          <img class="silk-image" style="width: 480px; height: 270px; margin: 0px 20px 0px 0px; object-fit: contain;" src="bgRubberPreview.gif" alt="">
+          <div class="kobweb-col kobweb-arrange-top kobweb-align-start">
+           <a class="silk-link navigation-item" style="min-width: 200px; padding: 15px 20px; color: white; text-align: center; font-size: 20px; font-weight: bold; text-decoration-line: none; border-radius: 10px; background-color: rgb(89, 136, 175);" href="https://apps.apple.com/gb/app/bg-rubber-background-remover/id6444268627?mt=12">macOS</a>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 60%;" id="education">
+      <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; margin: 0px 0px 20px;">
+       <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz" style="width: 100%; margin: 60px 0px 20px;">
+        <p style="width: 100%; text-align: center; letter-spacing: 3px; margin: 30px 0px 10px; font-size: 40px; font-weight: bold; color: rgb(0, 167, 142); transition: margin 300ms ease 0s;">Education</p>
+        <div class="kobweb-box kobweb-align-top-start" style="height: 2px; width: 80px; margin: 0px; background-color: rgb(0, 167, 142); border-radius: 50px;"></div>
+       </div>
+       <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="margin: 30px 0px 100px;">
+        <p style="width: 300px; margin: 0px; font-size: 20px; font-weight: bold; color: rgb(18, 29, 52);">2011 - 2017</p>
+        <div class="kobweb-col kobweb-arrange-top kobweb-align-start">
+         <p style="margin: 0px; font-size: 20px; font-weight: normal; color: rgb(18, 29, 52);">Bachelor of information System, Hanyang University, Seoul, South Korea</p>
+         <p style="margin: 5px 0px 0px; font-size: 20px; font-weight: bold; color: rgb(18, 29, 52);">GPA: 3.87 / 4.5</p>
+         <div class="kobweb-col kobweb-arrange-top kobweb-align-start">
+          <p style="width: 100%; margin: 5px 0px 0px; font-size: 16px; font-weight: normal; color: rgb(18, 29, 52);">Courses: C++, Java, Data structure, Database system, Operating System, System planning, etc</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
     </div>
-    <script src="/portfolio/portfoilo.js"></script>
-  </body>
+   </div>
+  </div> 
+  <script src="/portfolio/portfoilo.js"></script> 
+ </body>
 </html>

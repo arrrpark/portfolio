@@ -118,8 +118,8 @@
        </div>
       </div>
      </div>
-     <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz" style="width: 100%; background-color: rgb(249, 249, 249);">
-      <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 60%; padding: 50px 0px 0px;" id="project">
+     <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz" style="background-color: rgb(249, 249, 249); width: 100%;" id="project">
+      <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 60%; padding: 50px 0px 0px;">
        <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; padding: 50px 0px 150px;">
         <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz" style="width: 100%;">
          <p style="width: 100%; text-align: center; letter-spacing: 3px; margin: 30px 0px 10px; font-size: 40px; font-weight: bold; color: rgb(0, 167, 142); transition: margin 300ms ease 0s;">Projects</p>
@@ -135,20 +135,30 @@
          </div>
          <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; margin: 0px;">
           <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: bold; color: rgb(18, 29, 52);">- Performance improvement, migration and maintenance of the app</p>
-          <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- MacOS, Canon SDK, blueTooth integration work</p>
-          <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Migrating the app from Objective-C to Swift with the help of SwiftRewriter. About 50% of the whole code is migrated</p>
+          <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Migrating the app from Objective-C to Swift with the help of SwiftRewriter.</p>
           <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Added the feature that detect cars and subsequently cut them while maintaining the same margin on each side. Concatenated images to make 360 view of the car</p>
-          <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Added the feature of adjusting photo brightness, temperature, and zoom</p>
+          <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Updated third party deprecated library from AFNetwork to Apple's default URLSession to ensure the robustness of the app</p>
+          <p style="margin: 0px 0px 3px; font-size: 17px; font-weight: normal; color: rgb(18, 29, 52);">- Leveraged canon API to capture the car images from different side, using Apple's Combine operators such as zip, flatMap and retry to compose multiple asynchronous events</p>
          </div>
-         <div class="kobweb-row kobweb-arrange-center kobweb-align-center-vert" style="width: 100%; margin: 30px 0px 0px;">
-          <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz">
-           <img class="silk-image" style="width: 300px; margin: 0px 0px 20px; object-fit: contain;" src="cutAppCars.PNG" alt=""><span class="silk-span-text" style="font-size: 14px; font-weight: 600;">Images captured by macOS and Canon SDK</span>
-          </div><span class="fas fa-arrow-right" style="margin: 0px 15px;"></span>
-          <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz">
-           <img class="silk-image" style="width: 300px; margin: 0px 0px 5px; object-fit: contain;" src="carsOnWeb.PNG" alt=""><span class="silk-span-text" style="font-size: 14px; font-weight: 600;">Car images on Web</span>
-          </div><span class="fas fa-arrow-right" style="margin: 0px 15px;"></span>
-          <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz">
-           <img class="silk-image" style="width: 300px; margin: 0px 0px 20px; object-fit: contain;" src="rotatingCar.gif" alt=""><span class="silk-span-text" style="font-size: 14px; font-weight: 600;">360 View of the car</span>
+         <div class="kobweb-col kobweb-arrange-top kobweb-align-start">
+          <div class="kobweb-row kobweb-arrange-center kobweb-align-center-vert" style="width: 100%; margin: 30px 0px 0px;">
+           <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz">
+            <img class="silk-image" style="width: 300px; margin: 0px 0px 20px; object-fit: contain;" src="carcapture.gif" alt=""><span class="silk-span-text" style="font-size: 14px; font-weight: 600;">Images captured by iOS and Canon SDK</span>
+           </div><span class="fas fa-arrow-right" style="margin: 0px 15px;"></span>
+           <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz">
+            <img class="silk-image" style="width: 400px; margin: 0px 0px 20px; object-fit: contain;" src="carCapture.jpg" alt=""><span class="silk-span-text" style="font-size: 14px; font-weight: 600;">Car images on Web</span>
+           </div>
+          </div>
+          <div class="kobweb-row kobweb-arrange-center kobweb-align-center-vert" style="width: 100%; margin: 30px 0px 0px;">
+           <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz">
+            <img class="silk-image" style="width: 300px; margin: 0px 0px 20px; object-fit: contain;" src="cutAppCars.PNG" alt=""><span class="silk-span-text" style="font-size: 14px; font-weight: 600;">Images captured by macOS and Canon SDK</span>
+           </div><span class="fas fa-arrow-right" style="margin: 0px 15px;"></span>
+           <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz">
+            <img class="silk-image" style="width: 300px; margin: 0px 0px 5px; object-fit: contain;" src="carsOnWeb.PNG" alt=""><span class="silk-span-text" style="font-size: 14px; font-weight: 600;">Car images on Web</span>
+           </div><span class="fas fa-arrow-right" style="margin: 0px 15px;"></span>
+           <div class="kobweb-col kobweb-arrange-top kobweb-align-center-horiz">
+            <img class="silk-image" style="width: 300px; margin: 0px 0px 20px; object-fit: contain;" src="rotatingCar.gif" alt=""><span class="silk-span-text" style="font-size: 14px; font-weight: 600;">360 View of the car</span>
+           </div>
           </div>
          </div>
          <div class="kobweb-row kobweb-arrange-space-around kobweb-align-top" style="width: 100%; margin: 30px 0px 0px;">
